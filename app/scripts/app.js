@@ -23,11 +23,23 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/lijst',{
+        templateUrl: 'views/lijst.html',
+        controller: 'LijstCtrl'
+      })
+      .when('/vakantie/:id',{
+        templateUrl: 'views/vakantie.html',
+        controller: 'VakantieCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/404',{
+        templateUrl: '404.html'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404' //kies je zelf, gebruik homepage of 404
       });
   });
+  //ref: https://docs.angularjs.org/api/ngRoute/provider/$routeProvider#when

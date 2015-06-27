@@ -1,0 +1,12 @@
+<p> En als je hier niets ziet is de server aan het slapen of heeft hij weer problemen met CORS.</p>
+<div ng-app="VakantieCtrl">
+	<div class="col-md-12">
+		<h1>{{vakantie.titel}}</h1>
+		<img ng-src="https://dl.dropboxusercontent.com/u/33161611/HoGent/joetz/{{vakantie.foto.cover}}" width="100%">
+		<h3>{{vakantie.titel}}</h3>
+		<p>
+			<span ng-repeat="regel in vakantie.promotext">
+			{{regel}}</span></p>
+		<p class="label label-info large">{{vakantie.aantal_deelnemers}} personen</p>
+	</div>
+</div>
