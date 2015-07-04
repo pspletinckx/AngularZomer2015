@@ -8,11 +8,11 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('LijstCtrl', function ($scope,nodePieter) {
+  .controller('LijstCtrl', function ($scope,restcalls) {
 
     $scope.vakanties = [];
 
-    nodePieter
+    restcalls
     .getAll()
     .success(function(data){
     	$scope.vakanties = data;

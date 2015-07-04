@@ -8,13 +8,13 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('VakantieCtrl', function ($scope,$routeParams,nodePieter) {
+  .controller('VakantieCtrl', function ($scope,$routeParams,restcalls) {
 
   	var self = this;
   	self.vakantieId = $routeParams.id;
   	$scope.vakantie ={}; //hoeft niet echt voor objecten
 
-  	nodePieter
+  	restcalls
     .get(self.vakantieId)
     .success(function(data){
     	$scope.vakantie = data;
