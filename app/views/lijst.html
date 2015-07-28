@@ -1,5 +1,12 @@
 <p>Hier volgt een nog niet zo fraaie lijst met vakanties</p>
 <div ng-app="LijstCtrl">
-<ul class="nav" ng-repeat="vakantie in vakanties">
-	<li><a href="#/vakantie/{{vakantie._id}}">{{vakantie.titel}}</a></li></ul>	
+	<div class="row">
+<div class="col-xs-4" ng-repeat="vakantie in vakanties">
+			<a href="#/vakantie/{{vakantie._id}}" class="thumbnail">
+			<img ng-src="https://dl.dropboxusercontent.com/u/33161611/HoGent/joetz/{{vakantie.foto.cover}}" width="100%">
+			<p class="caption">{{vakantie.titel}}</p>
+			</a>
 </div>
+
+</div>
+<p>TODO Pagination</p>
