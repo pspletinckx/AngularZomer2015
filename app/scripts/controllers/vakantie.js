@@ -19,4 +19,5 @@ angular.module('angularZomer2015App')
     .success(function(data){
     	$scope.vakantie = data;
     });
+
 });

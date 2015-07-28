@@ -1,4 +1,4 @@
-<p class ="label label-warning"> En als je hier niets ziet is de server aan het slapen of heeft hij weer problemen met CORS.</p>
+<div class="alert-warning alert-dismissible"><p class ="label label-warning"> En als je hier niets ziet is de server aan het slapen of heeft hij weer problemen met CORS.</p></div>
 <div ng-app="VakantieCtrl">
 	<div class="col-md-6 col-sx-12">
 		<md-card>
@@ -20,8 +20,8 @@
   <div class="panel-heading">Details</div>
   <div class="panel-body">
   	<p>{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
-  	<h4>Aanbod voor meerdere leeftijden</h4>
-    <ul>
+  	<h4 ng-show ="vakantie.wie.length>1">Aanbod voor meerdere leeftijden</h4>
+    <ul class ="list-unstyled">
     	<li ng-repeat="groep in vakantie.wie">
     		{{groep.leeftijd}}</li></ul>
   </div>
@@ -74,7 +74,7 @@
   <div class="panel-heading">Informatie</div>
   <div class="panel-body">
   	<p>{{vakantie.informatie.tel}}</p>
-  	<p>{{vakantie.informatie.email}}</p>
+  	<a ng-href="mailto:{{vakantie.informatie.email}}">{{vakantie.informatie.email}}</a>
   </div>
 </div>
 </div>
