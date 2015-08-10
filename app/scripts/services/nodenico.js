@@ -8,7 +8,7 @@
  * Factory in the angularZomer2015App.
  */
 angular.module('angularZomer2015App')
-  .factory('restcalls', function ($http) {
+  .factory('netNico', function ($http) {
     // Service logic
     // ...
 
