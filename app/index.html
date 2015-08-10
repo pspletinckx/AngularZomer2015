@@ -46,6 +46,11 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/test">TEST</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a ng-href="#/register" ng-hide="user.isAuth" aria-label="Registreren">Registreer</a></li>
+              <li><a ng-hide="user.isAuth" ng-href="#/login" aria-label="Inloggen">Login</a></li>
+              <li><a ng-href="#/loguit" ng-show="user.isAuth" aria-label="Uitloggen">Log uit</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -79,6 +84,8 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/directives/rrn.js"></script>
+        <script src="scripts/directives/password.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/vakantie.js"></script>
@@ -86,6 +93,12 @@
         <script src="scripts/services/nodepieter.js"></script>
         <script src="scripts/controllers/lijst.js"></script>
         <script src="scripts/controllers/test.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/authentication.js"></script>
+        <script src="scripts/services/user-local.js"></script>
+        <script src="scripts/services/flash.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

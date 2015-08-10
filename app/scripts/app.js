@@ -40,6 +40,16 @@ angular
         templateUrl: 'views/test.html',
         controller: 'TestCtrl'
       })
+      .when('/login',{
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/register', {
+                controller: 'RegisterCtrl',
+                templateUrl: 'views/register.html',
+                controllerAs: 'vm'
+      })
       .when('/404',{
         templateUrl: '404.html'
       })

@@ -14,4 +14,4 @@ angular.module('angularZomer2015App')
       'AngularJS',
       'Karma'
     ];
-  });
+});

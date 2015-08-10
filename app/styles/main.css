@@ -81,3 +81,9 @@ body {
     border-bottom: 0;
   }
 }
+
+  label {
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+  }
