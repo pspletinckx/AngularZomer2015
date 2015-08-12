@@ -17,7 +17,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
-    'lk-google-picker'
+    'lk-google-picker',
+    'ngMaterial', 
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider

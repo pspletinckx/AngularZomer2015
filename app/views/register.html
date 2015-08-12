@@ -5,7 +5,7 @@
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required || form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength}">    
             <label for="rijksregisternummer">Rijksregisternummer</label>      
-            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="vm.user.rijksregisternummer" required rrn />
+            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="vm.user.RNR" required rrn />
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required" class="help-block">Rijksregisternummer is verplicht</span>
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength" class="help-block">Geen geldig rijksregisternummer</span>
         </div>
@@ -30,38 +30,38 @@
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.nr.$dirty && form.nr.$error.required}">
             <label for="nr">Nr.</label>
-            <input type="number" name="nr" id="Text1" class="form-control" ng-model="vm.user.nr" required />
+            <input type="number" name="nr" id="Text1" class="form-control" ng-model="vm.user.housenr" required />
             <span ng-show="form.nr.$dirty && form.nr.$error.required" class="help-block">Nr. is verplicht</span>
         </div>
 
         <div class="form-group form-inline">
             <label for="bus">Bus</label>
-            <input type="text" name="bus" id="Text1" class="form-control" ng-model="vm.user.bus"/>           
+            <input type="text" name="bus" id="Text1" class="form-control" ng-model="vm.user.bus"/>         
         </div>
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.gemeente.$dirty && form.gemeente.$error.required }">
             <label for="gemeente">Gemeente</label>
-            <input type="text" name="gemeente" id="Text1" class="form-control" ng-model="vm.user.gemeente" required />
+            <input type="text" name="gemeente" id="Text1" class="form-control" ng-model="vm.user.city" required />
             <span ng-show="form.gemeente.$dirty && form.gemeente.$error.required" class="help-block">Gemeente is verplicht</span>
         </div>
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.postcode.$dirty && form.postcode.$error.required || form.postcode.$error.min || form.postcode.$error.max}">
             <label for="postcode">Postcode</label>
-            <input type="number" min="8000" max="8999" name="postcode" id="Text1" class="form-control" ng-model="vm.user.postcode" required />
+            <input type="number" min="8000" max="8999" name="postcode" id="Text1" class="form-control" ng-model="vm.user.postalcode" required />
             <span ng-show="form.postcode.$dirty && form.postcode.$error.required" class="help-block">Postcode is verplicht</span>
             <span ng-show="form.postcode.$dirty && form.postcode.$error.min || form.postcode.$error.max" class="help-block">Postcode moet tussen 8000 en 8999 liggen</span>
         </div>
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || form.email.$error.email}">
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="Text1" class="form-control" ng-model="vm.user.email" required />
+            <input type="email" name="email" id="Text1" class="form-control" ng-model="vm.user.username" required />
             <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">E-mail is verplicht</span>
             <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">E-mail is niet correct</span>
         </div>
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.tel.$dirty && form.tel.$error.required }">
             <label for="tel">Tel. of GSM</label>
-            <input type="text" name="tel" id="Text1" class="form-control" ng-model="vm.user.tel" required />
+            <input type="text" name="tel" id="Text1" class="form-control" ng-model="vm.user.phonenumber" required />
             <span ng-show="form.tel.$dirty && form.tel.$error.required" class="help-block">Tel. of GSM is verplicht</span>
         </div>
 
@@ -73,7 +73,7 @@
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.passwordconfirm.$dirty && form.passwordconfirm.$error.required || form.passwordconfirm.$error.compareTo}">
             <label for="passwordconfirm">Bevestiging wachtwoord</label>
-            <input type="password" name="passwordconfirm" id="Text1" class="form-control" ng-model="vm.user.passwordconfirm" required compare-to="vm.user.password"/>
+            <input type="password" name="passwordconfirm" id="Text1" class="form-control" ng-model="vm.user.confirmpassword" required compare-to="vm.user.password"/>
             <span ng-show="form.passwordconfirm.$dirty && form.passwordconfirm.$error.compareTo || form.passwordconfirm.$error.required" class="help-block">Wachtwoorden komen niet overeen</span>
         </div>
 

@@ -8,7 +8,6 @@ angular.module('angularZomer2015App')
         vm.register = register;
  
         function register() {
-                    console.log(vm.user);
             vm.dataLoading = true;
             UserService.Create(vm.user)
                 .then(function (response) {
