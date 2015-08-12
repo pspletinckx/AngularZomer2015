@@ -1,25 +1,24 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.controller('LoginCtrl', ['$location', 'AuthenticationService', 'FlashService', 
-    function($location, AuthenticationService, FlashService){
+.controller('LoginCtrl', ['$location', 'AuthenticationService', 'FlashService', '$scope',
+    function($location, AuthenticationService, FlashService, $scope){
 
         var vm = this;
  
         vm.login = login;
 
-        // reset login status
-         AuthenticationService.ClearCredentials();
-
         function login() {
             vm.dataLoading = true;
-            AuthenticationService.Login(vm.username, vm.password, function (response) {
-                if (response.success) {
-                    AuthenticationService.SetCredentials(vm.username, vm.password);
+            AuthenticationService.Login(vm.username, vm.password, function (response, user) {              
+                if (response.error_description=== undefined) {
+                    var token = response.token_type + ' ' + response.access_token;
+                    AuthenticationService.SetCredentials(token);
                     $location.path('/');
-                } else {
-                    FlashService.Error(response.message);
-                    vm.error = response.message;
+                    $scope.$emit('user:loggedIn', user);
+                } else {                  
+                    FlashService.Error(response.error_description);
+                    vm.error = response.error_description;
                     vm.dataLoading = false;
                 }
             });

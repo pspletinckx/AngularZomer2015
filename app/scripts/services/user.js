@@ -28,7 +28,7 @@ angular.module('angularZomer2015App')
         }
  
         function Create(user) {
-            return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
+            return $http.post('http://localhost:17649/api/account/register', user).then(handleSuccess, handleError('Error creating user'));
         }
  
         function Update(user) {
@@ -42,6 +42,7 @@ angular.module('angularZomer2015App')
         // private functions
  
         function handleSuccess(data) {
+            console.log('success');
             return data;
         }
  

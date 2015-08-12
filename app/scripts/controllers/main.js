@@ -8,10 +8,33 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-});
+  .controller('MainCtrl', ['AuthenticationService', '$scope', 
+   function (AuthenticationService, $scope) {
+
+  	var _onUserLoggedIn = function(event, user) {
+                $scope.user = user;
+            };
+
+    var _onUserLoggedOut = function() {
+                $scope.user = {};
+            };
+
+    var _logout = function() {
+         AuthenticationService.logout();    
+         $scope.$broadcast('user:loggedOut');
+
+            };
+
+
+	AuthenticationService.Init().then(function(user) {
+                if (user.isAuth) {
+                    $scope.$broadcast('user:loggedIn', user);
+                }
+            });
+
+
+   $scope.$on('user:loggedIn', _onUserLoggedIn);
+   $scope.$on('user:loggedOut', _onUserLoggedOut);
+   $scope.logout = _logout;
+
+}]);

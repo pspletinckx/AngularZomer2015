@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles/test_grid.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angularZomer2015App">
+  <body ng-app="angularZomer2015App" ng-controller="MainCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -52,7 +52,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a ng-href="#/register" ng-hide="user.isAuth" aria-label="Registreren">Registreer</a></li>
               <li><a ng-hide="user.isAuth" ng-href="#/login" aria-label="Inloggen">Login</a></li>
-              <li><a ng-href="#/loguit" ng-show="user.isAuth" aria-label="Uitloggen">Log uit</a></li>
+              <li><a ng-click="logout()" ng-show="user.isAuth" aria-label="Uitloggen">Log uit</a></li>
             </ul>
           </div>
         </div>
@@ -89,11 +89,13 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+                <script src="scripts/services/authentication.js"></script>
         <script src="scripts/directives/rrn.js"></script>
         <script src="scripts/directives/password.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -104,8 +106,7 @@
         <script src="scripts/controllers/lijst.js"></script>
         <script src="scripts/controllers/test.js"></script>
         <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/services/authentication.js"></script>
-        <script src="scripts/services/user-local.js"></script>
+        <script src="scripts/services/user.js"></script>
         <script src="scripts/services/flash.js"></script>
         <script src="scripts/controllers/register.js"></script>
 
