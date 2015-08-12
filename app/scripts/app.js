@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'lk-google-picker'
   ])
   .config(function ($routeProvider) {
     $routeProvider

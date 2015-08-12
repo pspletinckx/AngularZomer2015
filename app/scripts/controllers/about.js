@@ -8,10 +8,20 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+.controller('AboutCtrl', ['$scope', function ($scope) {
+   $scope.files = [];
+
+   $scope.onLoaded = function () {
+     console.log('Google Picker loaded!');
+   }
+
+   $scope.onPicked = function (docs) {
+     angular.forEach(data.docs, function (file, index) {
+       $scope.files.push(file);
+     });
+   }
+
+   $scope.onCancel = function () {
+     console.log('Google picker close/cancel!');
+   }
+}]);
