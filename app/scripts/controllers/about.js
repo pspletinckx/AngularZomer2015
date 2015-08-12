@@ -16,7 +16,8 @@ angular.module('angularZomer2015App')
    }
 
    $scope.onPicked = function (docs) {
-     angular.forEach(data.docs, function (file, index) {
+
+     angular.forEach(docs, function (file, index) {
        $scope.files.push(file);
      });
    }
@@ -25,3 +26,4 @@ angular.module('angularZomer2015App')
      console.log('Google picker close/cancel!');
    }
 }]);
+

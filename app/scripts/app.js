@@ -59,5 +59,16 @@ angular
       .otherwise({
         redirectTo: '/404' //kies je zelf, gebruik homepage of 404
       });
+  })
+.config(['lkGoogleSettingsProvider', function (lkGoogleSettingsProvider) {
+
+  lkGoogleSettingsProvider.configure({
+    apiKey   : 'AIzaSyD2ykQJlbGOLgdzMYGkRgpAgCtzA-r72yQ',
+    clientId : '1044635851629-np9mt0k3jp02muigtljj65v2t9smpgbn.apps.googleusercontent.com',
+    scopes   : ['https://www.googleapis.com/auth/drive'],
+    locale   : 'nl',
+    features : ['MULTISELECT_ENABLED', 'ANOTHER_ONE'],
+    views    : ['DocsUploadView()']
   });
+}])
   //ref: https://docs.angularjs.org/api/ngRoute/provider/$routeProvider#when
