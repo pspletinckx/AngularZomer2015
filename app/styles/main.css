@@ -117,3 +117,8 @@ fieldset {
   font-weight:bold;
   }
 
+
+#links div{
+  display: inline;
+}
+

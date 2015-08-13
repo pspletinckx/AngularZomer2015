@@ -17,7 +17,6 @@ angular.module('angularZomer2015App')
    }
 
    $scope.onPicked = function (docs) {
-
      angular.forEach(docs, function (file, index) {
        $scope.files.push(file);
        netFoto.post(file).then(
@@ -26,10 +25,6 @@ angular.module('angularZomer2015App')
         },
         function(response){}
         );
-
-
-
-
      });
    }
 
@@ -49,14 +44,7 @@ angular.module('angularZomer2015App')
     });
    }
     $scope.update();
-
 });
 
-document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
-        link = target.src ? target.parentNode : target,
-        options = {index: link, event: event},
-        links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-};
+//controller requires vacation that goes with the account or enlistment
+
