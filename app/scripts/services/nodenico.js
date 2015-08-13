@@ -20,6 +20,12 @@ angular.module('angularZomer2015App')
       return $http.get('http://localhost:51698/api/vacation/'+ref);
     }
 
+    vakantie.post = function(vakantie){       
+      $http.post('http://localhost:51698/api/vacation/',
+        { vakantie             
+        });
+    }
+
     // Public API here
     return vakantie;
     

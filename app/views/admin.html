@@ -1,0 +1,66 @@
+<h2> Vakantie toevoegen </h2>
+<hr/>
+
+</div>
+	<form class="" name="vakantieForm" ng-controller = "AdminCtrl">		
+		<h3>Algemene informatie</h3>
+		<hr/>
+		<label for="titel" class="">Titel</label><Input id="titel" class="form-control" ng-model="vakantie.titel" type="text"/><br/>	
+		<label>Promotext</label><textarea class="form-control" ng-model="vakantie.promotext" type="text"/><br/>
+		<label>Min. Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.min_leeftijd" type="text"/><br/>
+		<label>Max.Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.max_leeftijd" type="text"/><br/>
+		<label class="col-xs-4 no-padding-left">Begindatum: {{vakantie.wanneer.date_begin|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_begin" type="date"/><br/>
+		<label class="col-xs-4 no-padding-left">Einddatum: {{vakantie.wanneer.date_end|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_end" type="date"/><br/>
+		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="AdminCtrl.vakantie.aantal_deelnemers" type="text"/>
+
+		<h3>Locatie</h3>
+		<hr/>
+		<label>Vakantiedomein</label><Input class="form-control" ng-model="vakantie.waar.vakantie_domein" type="text"/><br/>
+		<label>Stad</label><Input class="form-control" ng-model="AdminCtrl.vakantie.waar.stad" type="text"/>
+		
+		<h3>Prijs</h3>
+		<hr/>
+		<label>Basisprijs</label><Input class="form-control" ng-model="vakantie.prijs.basis" type="text"/><br/>
+		<label>Prijs enkele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_enkel" type="text"/><br/>
+		<label>Prijs dubbele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_dubbel" type="text"/><br/>		
+		<label>Fiscaal voordeel</label><Input ng-model="vakantie.prijs.fiscaal_voordeel" type="checkbox"/><br/>
+
+		<h3>Contactinformatie</h3>
+		<hr/>
+		<label>Telefoonnummer</label><Input class="form-control" ng-model="vakantie.informatie.tel" type="text"/><br/>
+		<label>E-mail</label><Input class="form-control" ng-model="vakantie.informatie.email" type="text"/>
+
+		<h3>Bijkomende informatie</h3>
+		<hr/>
+		<label>Opmerkingen</label><br />
+		<div ng-repeat="op in vakantie.opmerking">
+			<div class="add-border">
+				<div><strong class="opmerking-label no-padding-left">Titel:</strong><span>{{op.titel}}</span></div>
+				<div><strong class="opmerking-label no-padding-left">Opmerking:</strong><span class="margin-bottom-5">{{op.text}}</span></div>
+				<div><strong class="opmerking-label no-padding-left">Url:</strong><span>{{op.url}}</label><button class="md-raised btn pull-right btn-danger" data-ng-Click="removeComment($index)" type="button"><i class="glyphicon glyphicon-remove"/></button></div>
+			</div>
+		</div>
+		<br/>		
+		<div class="add-border">			
+			<label class="col-xs-2 no-padding-left control-label">Title:</label>
+			<Input class="form-control col-xs-10 margin-bottom-5" type="text" ng-model="commentTitle" required/>
+			<label class="no-padding-left col-xs-12 control-label">Opmerking:</label>
+			<textarea class="form-control col-xs-12 margin-bottom-5" type="text" ng-model="commentHelper" required/>
+			<label class="no-padding-left col-xs-2 ">Url:</label>
+			<Input class="col-xs-10 form-control" type="text" ng-model="commentUrl"/><br/>
+			<div><Input class="md-raised col-xs-3 btn pull-right" data-ng-Click="addComment()" type="button" value="Opmerking bijvoegen"></div>		
+		</div>		<br />	
+		<label>Inbegrepen</label><br />	
+		<div class="add-border">
+			<div  class="display-inherit" ng-repeat="item in vakantie.inbegrepen">
+				<div class="full-width display-inherit">
+				<span class="form-control">{{item.basis}}</span>
+				<button class="md-raised btn btn-danger pull-right" data-ng-Click="removeIncludedItem($index)" type="button"><i class="glyphicon glyphicon-remove"/></button></div>
+			</div>
+			<div class="display-inherit"><Input class="col-xs-11 form-control" type="text" ng-model="includedItem"/>
+			<button class="md-raised col-xs-1 btn pull-right" data-ng-Click="addIncludedItem()" type="button"><i class="glyphicon glyphicon-plus"/></button></div>	
+		</div>
+	</form>
+</div>
+<br />
+<md-button class="md-raised no-margin-left" data-ng-Click="submit()">Voeg vakantie toe</md-button>

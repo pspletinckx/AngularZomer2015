@@ -49,7 +49,7 @@ angular.module('angularZomer2015App')
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:17649/token',
+                url: 'http://localhost:51698/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password' }, 
                 transformRequest: function (obj) {
@@ -95,7 +95,7 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://localhost:17649/api/account', 
+                url: 'http://localhost:51698/api/account', 
                 headers: header
             });
         }
