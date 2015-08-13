@@ -1,76 +1,197 @@
 <div>
-    
-    <form name="form" ng-submit="vm.subscribe()" role="form" class="form-horizontal">
-    <h1 class="form-group">Inschrijven</h1>
+    <form name="form" ng-submit="self.subscribe()" role="form" class="form-horizontal">    
+        <fieldset>
+            <legend>Is de deelnemer lid van de Bond Moyson?</legend>
 
-    <div class="form-group">
-    <legend class="form-group">Is de deelnemer lid van de Bond Moyson?</legend>
-    <label><input type="radio" ng-model="inschrijving.lid" value="Ja">Ja</label>
-    <label><input type="radio" ng-model="inschrijving.lid" value="Nee">Nee</label>
-    </div>
+            <div class="form-group">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <div class="radio col-sm-4"
+                    <label>
+                        <input  type="radio" id="lid" value="Lid"
+                               name="isLid"
+                               ng-model="self.isLid"/>
+                               Ja
+                    </label>
+                </div
+                <div class="radio col-sm-5">
+                    <label>
+                        <input  type="radio" id="geenlid"
+                               ng-model="self.isLid" name="isLid" value="geenLid" />
+                               Nee
+                    </label>
+                </div>
 
-    <div ng-hide="inschrijving.isLid">
-        <h4 class="form-group">Aansluitingsnummer van de ouder bij wie de deelnemer ten laste staat</h4>
+            </div>
+            </div>
 
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
-            <label for="aansluitingsnummer1">Aansluitingsnummer</label>
-            <input type="text" name="aansluitingsnummer1" id="Text1" class="form-control" ng-model="vm.inschr.aanslnr1" required />
-            <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Voornaam is verplicht</span>
+            <div ng-hide="self.isLid == 'geenLid'">
+                <h4>Aansluitingsnummer van de ouder bij wie de deelnemer ten laste staat</h4>
+
+            <div class="form-inline" ng-class="{ 'has-error': form.aansluitingsnummer1.$dirty && form.aansluitingsnummer1.$error.required }">
+                <label class="labelForm" for="aansluitingsnummer1">Aansluitingsnummer</label>
+                <input type="text" name="aansluitingsnummer1" id="Text1" class="form-control" ng-model="self.inschr.aanslnr1" ng-required="self.isLid == 'Lid'"/>
+                <span ng-show="form.aansluitingsnummer1.$dirty && form.aansluitingsnummer1.$error.required" class="help-block">Aansluitingsnummer is verplicht</span>
+            </div>
+
+            <img src="../images/klever_309.png" alt="Description"/>
+            <p style="color: #da002f">Aansluitingsnummer vb. 309/1234567</p>
+            <p style="color: #21b7a7">Code gerechtigde vb. 110/110</p>
+            <p style="color: #b965a8">Rijksregisternummer vb. 12345678910</p>
+
+            <h4>Aansluitingsnummer 2de ouder </h4>
+
+            <div class="form-inline" ng-class="{ 'has-error': form.aansluitingsnummer2.$dirty && form.aansluitingsnummer2.$error.required }">
+                <label class="labelForm" for="aansluitingsnummer2">Aansluitingsnummer</label>
+                <input type="text" name="aansluitingsnummer2" id="Text1" class="form-control" ng-model="self.inschr.aanslnr2" ng-required="self.isLid == 'Lid'" />
+                <span ng-show="form.aansluitingsnummer2.$dirty && form.aansluitingsnummer2.$error.required" class="help-block">Voornaam is verplicht</span>
+            </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Gegevens van de contactpersoon</legend>
+                <div class="col-sm-1"/>
+            <label>Rijksregisternummer: </label><p> {{user.rnr}}</p>
+            <div class="col-sm-1"/>
+                <label>Naam: </label><p> {{user.firstName}} {{user.lastName}}</p>
+                            <div class="col-sm-1"/>
+                <label>Adres: </label> <p> {{user.street}} {{user.houseNr}} bus {{user.bus}}</p>
+                            <div class="col-sm-1"/>
+                                        <label/><p> {{user.postalCode}} {{user.city}} </p>
+                                               <div class="col-sm-1"/>
+        <label>Tel./GSM</label><p>{{user.phoneNumber}}</p>
+
+        <h4>Is de contactpersoon ook de betalende ouder? </h4>
+            <div class="form-group">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+                <div class="radio col-sm-4">
+                    <label >
+                        <input type="radio" id="betaler" value="true"
+                               name="isBetalend"
+                               ng-model="self.isBetaler"/>
+                               Ja
+                    </label>
+                </div>
+                <div class="radio col-sm-5">
+                    <label  >
+                        <input type="radio" id="nietBetaler"
+                               ng-model="self.isBetaler" name="isBetalend" value="false" />
+                               Nee
+                    </label>
+                </div>
+
+            </div>
+            </div>
+        </fieldset> 
+
+        <fieldset>
+            <div ng-hide="self.isBetaler == 'true'">
+                <legend>Gegevens van de ouder die betaalt</legend>
+
+        <div class="form-inline" ng-class="{ 'has-error': form.rijksregisternummerBetaler.$dirty && form.rijksregisternummerBetaler.$error.required || form.rijksregisternummerBetaler.$error.rrn || form.rijksregisternummerBetaler.$error.maxlength || form.rijksregisternummerBetaler.$error.minlength}">    
+            <label class="labelForm" for="rijksregisternummerBetaler">Rijksregisternummer</label>      
+            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummerBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.RNR" ng-required="self.isBetaler == 'false'" rrn />
+            <span ng-show="form.rijksregisternummerBetaler.$dirty && form.rijksregisternummerBetaler.$error.required" class="help-block">Rijksregisternummer is verplicht</span>
+            <span ng-show="form.rijksregisternummerBetaler.$dirty && form.rijksregisternummerBetaler.$error.rrn || form.rijksregisternummerBetaler.$error.maxlength || form.rijksregisternummerBetaler.$error.minlength" class="help-block">Geen geldig rijksregisternummer</span>
         </div>
 
-        <img src="../images/klever_309.png" alt="Description"/>
-        <p style="color: #da002f">Aansluitingsnummer vb. 309/1234567</p>
-        <p style="color: #21b7a7">Code gerechtigde vb. 110/110</p>
-        <p style="color: #b965a8">Rijksregisternummer vb. 12345678910</p>
-
-        <h4 class="form-group">Aansluitingsnummer 2de ouder </h4>
-
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
-            <label for="aansluitingsnummer2">Aansluitingsnummer</label>
-            <input type="text" name="aansluitingsnummer2" id="Text1" class="form-control" ng-model="vm.inschr.aanslnr2" required />
-            <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Voornaam is verplicht</span>
+        <div class="form-inline" ng-class="{ 'has-error': form.firstnameBetaler.$dirty && form.firstnameBetaler.$error.required }">
+            <label class="labelForm" for="firstnameBetaler">Voornaam</label>
+            <input type="text" name="firstnameBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.firstname" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.firstnameBetaler.$dirty && form.firstnameBetaler.$error.required" class="help-block">Voornaam is verplicht</span>
         </div>
 
-    </div>
+        <div class="form-inline" ng-class="{ 'has-error': form.lastNameBetaler.$dirty && form.lastNameBetaler.$error.required }">
+            <label class="labelForm" for="lastNameBetaler">Naam</label>
+            <input type="text" name="lastNameBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.lastName" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.lastNameBetaler.$dirty && form.lastNameBetaler.$error.required" class="help-block">Naam is verplicht</span>
+        </div>
 
-    <div>
-        <legend class="form-group">Gegevens van de deelnemer</legend>
+        <div class="form-inline" ng-class="{ 'has-error': form.streetBetaler.$dirty && form.streetBetaler.$error.required }">
+            <label class="labelForm" for="streetBetaler">Straat</label>
+            <input type="text" name="streetBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.street" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.streetBetaler.$dirty && form.streetBetaler.$error.required" class="help-block">Straat is verplicht</span>
+        </div>
 
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required || form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength}">    
-            <label for="rijksregisternummer">Rijksregisternummer</label>      
-            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="vm.user.RNR" required rrn />
+        <div class="form-inline" ng-class="{ 'has-error': form.nrBetaler.$dirty && form.nrBetaler.$error.required}">
+            <label class="labelForm" for="nrBetaler">Nr.</label>
+            <input type="number" name="nrBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.housenr" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.nrBetaler.$dirty && form.nrBetaler.$error.required" class="help-block">Nr. is verplicht</span>
+        </div>
+
+        <div class="form-inline">
+            <label class="labelForm" for="busBetaler">Bus</label>
+            <input type="text" name="busBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.bus"/>         
+        </div>
+
+        <div class="form-inline" ng-class="{ 'has-error': form.gemeenteBetaler.$dirty && form.gemeenteBetaler.$error.required }">
+            <label class="labelForm" for="gemeenteBetaler">Gemeente</label>
+            <input type="text" name="gemeenteBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.city" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.gemeenteBetaler.$dirty && form.gemeenteBetaler.$error.required" class="help-block">Gemeente is verplicht</span>
+        </div>
+
+        <div class="form-inline" ng-class="{ 'has-error': form.postcodeBetaler.$dirty && form.postcodeBetaler.$error.required || form.postcodeBetaler.$error.min || form.postcodeBetaler.$error.max}">
+            <label class="labelForm" for="postcodeBetaler">Postcode</label>
+            <input type="number" min="8000" max="8999" name="postcodeBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.postalcode" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.postcodeBetaler.$dirty && form.postcodeBetaler.$error.required" class="help-block">Postcode is verplicht</span>
+            <span ng-show="form.postcodeBetaler.$dirty && form.postcodeBetaler.$error.min || form.postcodeBetaler.$error.max" class="help-block">Postcode moet tussen 8000 en 8999 liggen</span>
+        </div>
+
+        <div class="form-inline" ng-class="{ 'has-error': form.telBetaler.$dirty && form.telBetaler.$error.required }">
+            <label class="labelForm" for="telBetaler">Tel. of GSM</label>
+            <input type="text" name="telBetaler" id="Text1" class="form-control" ng-model="self.inschr.betaler.phonenumber" ng-required="self.isBetaler == 'false'" />
+            <span ng-show="form.telBetaler.$dirty && form.telBetaler.$error.required" class="help-block">Tel. of GSM is verplicht</span>
+        </div>
+</div>
+</fieldset>
+
+        <fieldset>
+            <legend>Gegevens van de deelnemer</legend>
+
+        <div class="form-inline" ng-class="{ 'has-error': form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required || form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength}">    
+            <label class="labelForm" for="rijksregisternummer">Rijksregisternummer</label>      
+            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="self.inschr.RNR" required rrn />
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required" class="help-block">Rijksregisternummer is verplicht</span>
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength" class="help-block">Geen geldig rijksregisternummer</span>
         </div>
 
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
-            <label for="firstname">Voornaam</label>
-            <input type="text" name="firstname" id="Text1" class="form-control" ng-model="vm.user.firstname" required />
+        <div class="form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
+            <label class="labelForm" for="firstname">Voornaam</label>
+            <input type="text" name="firstname" id="Text1" class="form-control" ng-model="self.inschr.firstname" required />
             <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Voornaam is verplicht</span>
         </div>
 
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
-            <label for="username">Naam</label>
-            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
+        <div class="form-inline" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label class="labelForm" for="username">Naam</label>
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="self.inschr.lastName" required />
             <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Naam is verplicht</span>
         </div>
 
-<!-- Insert datepicker here -->
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
-            <label for="aansluitingsnummer2">Geboortedatum</label>
-            <input type="text" name="aansluitingsnummer2" id="Text1" class="form-control" ng-model="vm.inschr.aanslnr2" required />
-            <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Voornaam is verplicht</span>
+        <div class="form-inline" ng-class="{ 'has-error': form.birthdate.$dirty && form.birthdate.$error.required }">
+            <label class="labelForm" for="birthdate">Geboortedatum</label>
+      <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="self.inschr.birthdate" is-open="status.opened" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+            <span ng-show="form.birthdate.$dirty && form.birthdate.$error.required" class="help-block">Voornaam is verplicht</span>
         </div>
+        </fieldset>
 
-    </div>
-
-
-
+ 
         <div class="form-actions">
-            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Inschrijven</button>
-            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button type="submit" ng-disabled="form.$invalid || self.dataLoading" class="btn btn-primary">Inschrijven</button>
+            <img ng-if="self.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             <a href="#/login" class="btn btn-link">Annuleer</a>
         </div>
-    </form>
+    </form> 
 </div>
+
+
+        
 

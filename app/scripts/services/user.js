@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.factory('UserService', ['$http', 
-    function($http){
+.factory('UserService', ['$http', 'localStorageService',
+    function($http, localStorageService){
 
         var service = {};
  
@@ -24,7 +24,16 @@ angular.module('angularZomer2015App')
         }
  
         function GetByUsername(username) {
-            return $http.get('http://localhost:17649/api/account/?username=' + username).then(handleSuccess, handleError('Error getting user by username'));
+            var header={};
+            var authData = localStorageService.get('authData');
+            var token = authData.token;
+            header.Authorization = token;
+
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:17649/api/account/?username=' + username,
+                headers: header
+            });
         }
  
         function Create(user, callback) {

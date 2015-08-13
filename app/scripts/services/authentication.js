@@ -4,7 +4,7 @@ angular.module('angularZomer2015App')
 .factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService', 
     function($http, $cookieStore, $q, $rootScope,  $timeout, UserService, localStorageService){
 
-        var baseUrl = 'http://aug2015.devilcrafter.com'
+        var baseUrl = 'http://localhost:17649'
         var service = {}, 
         _user = {
             email: '',
@@ -17,6 +17,7 @@ angular.module('angularZomer2015App')
         service.Login = Login;
         service.SetCredentials = SetCredentials;
         service.logout = _logout; 
+        service.GetMe = GetMe;
  
         return service;
 
@@ -60,7 +61,7 @@ angular.module('angularZomer2015App')
             }}).success(function(response) {
                 callback(response, _user);
             }).error(function(response){
-                callback(response, _user);
+                callback(response);
             });
         }
 

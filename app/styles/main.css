@@ -137,6 +137,27 @@ html,body {
 .container{
   margin-bottom:100px;
 }
+
+.form-inline{
+  padding: 4px;
+}
+
+fieldset {
+  padding: 1em;
+  font:100%/1 sans-serif;
+  }
+
+.labelForm {
+  float:left;
+  width:25%;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  }
+
+
 #links div{
   display: inline;
 }
+
