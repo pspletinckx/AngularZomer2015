@@ -14,7 +14,7 @@ angular.module('angularZomer2015App')
                 if (response.error_description=== undefined) {
                     var token = response.token_type + ' ' + response.access_token;
                     AuthenticationService.SetCredentials(token);
-                    $location.path('/');
+                    window.history.back();
                     $scope.$emit('user:loggedIn', user);
                 } else {                  
                     FlashService.Error(response.error_description);

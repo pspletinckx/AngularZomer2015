@@ -1,7 +1,7 @@
 <div>
-    <h2>Registreren</h2>
     <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
     <form name="form" ng-submit="vm.register()" role="form" class="form-horizontal">
+            <h2 class="form-group">Registreren</h2>
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required || form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength}">    
             <label for="rijksregisternummer">Rijksregisternummer</label>      

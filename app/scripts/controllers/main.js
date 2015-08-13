@@ -22,7 +22,6 @@ angular.module('angularZomer2015App')
     var _logout = function() {
          AuthenticationService.logout();    
          $scope.$broadcast('user:loggedOut');
-
             };
 
 

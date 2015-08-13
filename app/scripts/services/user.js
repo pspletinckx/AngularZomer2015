@@ -24,13 +24,19 @@ angular.module('angularZomer2015App')
         }
  
         function GetByUsername(username) {
-            return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+            return $http.get('http://localhost:17649/api/account/?username=' + username).then(handleSuccess, handleError('Error getting user by username'));
         }
  
-        function Create(user) {
-            return $http.post('http://localhost:17649/api/account/register', user).then(handleSuccess, handleError('Error creating user'));
+        function Create(user, callback) {
+            $http.post('http://localhost:17649/api/account/register', user)
+            .success(function(response){
+                callback(response);
+            }).error(function(response){
+                callback(response);
+            });
+
+            
         }
- 
         function Update(user) {
             return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
         }
@@ -42,12 +48,13 @@ angular.module('angularZomer2015App')
         // private functions
  
         function handleSuccess(data) {
-            console.log('success');
+            console.log(data);
             return data;
         }
  
         function handleError(error) {
             return function () {
+                console.log(error)
                 return { success: false, message: error };
             };
         }
