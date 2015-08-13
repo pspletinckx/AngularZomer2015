@@ -2,14 +2,14 @@
 <div ng-app="VakantieCtrl">
 	<div class="col-md-6 col-sx-12">
 		<md-card>
-		<img ng-src="https://dl.dropboxusercontent.com/u/33161611/HoGent/joetz/{{vakantie.cover_foto.locatie}}" width="100%">
+		<img ng-src="{{vakantie.cover_foto.locatie}}" width="100%">
 		<md-card-content>
 		<h3>{{vakantie.titel}}</h3>
 		<p>
 			<span>{{regel}}</span></p>
 		</md-card-content>
 		<p class="label label-info">{{vakantie.aantal_deelnemers}} personen</p>
-		<p class="label label-info">{{vakantie.wanneer[0].date_begin|date}} tot {{vakantie.wanneer[0].date_end|date}} </p>
+		<p class="label label-info">{{vakantie.wanneer.date_begin|date}} tot {{vakantie.wanneer.date_end|date}} </p>
 		<p class="label label-info">{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
 
 		</md-card>
@@ -19,11 +19,11 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">Details</div>
 		  <div class="panel-body">
+		  	<p>{{vakantie.promotext}}</p>
 		  	<p>{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
 		  	<h4 ng-show ="vakantie.wie.length>1">Aanbod voor meerdere leeftijden</h4>
-		    <ul class ="list-unstyled">
-		    	<li ng-repeat="groep in vakantie.wie">
-		    		<p> Groep {{groep.groep}}: {{groep.leeftijd.min_leeftijd}}- tot {{groep.leeftijd.max_leeftijd}}-jarigen</li></ul>
+		  	<p> {{vakantie.leeftijd.min_leeftijd}}- tot {{vakantie.leeftijd.max_leeftijd}}-jarigen</p>
+		    
 		  </div>
 		</div>
 

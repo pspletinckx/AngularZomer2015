@@ -98,4 +98,6 @@ html,body {
 .container{
   margin-bottom:100px;
 }
-
+#links div{
+  display: inline;
+}
