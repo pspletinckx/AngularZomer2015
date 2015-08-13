@@ -53,6 +53,10 @@ angular
                 templateUrl: 'views/register.html',
                 controllerAs: 'vm'
       })
+      .when('/vakantie/:id/subscribe',{
+        templateUrl: 'views/subscribe.html',
+        controller: 'SubscribeCtrl'
+      })
       .when('/404',{
         templateUrl: '404.html'
       })

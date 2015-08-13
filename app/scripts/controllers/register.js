@@ -9,17 +9,15 @@ angular.module('angularZomer2015App')
  
         function register() {
             vm.dataLoading = true;
-            UserService.Create(vm.user)
-                .then(function (response) {
-                    if (response.success) {
+            UserService.Create(vm.user, function(response){
+                if (response.message === undefined) {
                         FlashService.Success('Registration successful', true);
                         $location.path('/login');
                     } else {
+                        vm.error = "Gebruiker bestaat al";
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
                     }
-                });
+            })
         }
-
-
     }]);

@@ -10,14 +10,13 @@ angular.module('angularZomer2015App')
             email: '',
             token: '',
             isAuth: false, 
-            type: ''
+            role: '', 
         };
 
         service.Init = Init;
         service.Login = Login;
         service.SetCredentials = SetCredentials;
         service.logout = _logout; 
-        service.getprofile = _getProfile;
  
         return service;
 
@@ -27,6 +26,12 @@ angular.module('angularZomer2015App')
 
             if(authData) {
                 _user.token = authData.token;
+
+                GetMe().then(function(){
+
+                }, function(){
+
+                });
                
                     _user.isAuth = true;
                     defer.resolve(_user);
@@ -35,46 +40,16 @@ angular.module('angularZomer2015App')
             }
 
             return defer.promise;
-        };
-
-        function _getProfile() {
-            var defer = $q.defer(),
-                headers = {};
-
-            headers.Authorization = _user.token;
-
-            $http({
-                method: 'GET',
-                url: baseUrl + '/user/me',
-                headers: headers
-            }).success(function(response) {
-                var userResponse = response.data;
-                //_user.firstName = userResponse.first_name;
-                //_user.lastName = userResponse.last_name;
-                //_user.email = userResponse.email;
-                //_user.type = userResponse.type;
-
-                for(var attribute in userResponse) {
-                    _user[attribute] = userResponse[attribute];
-                }
-
-                defer.resolve();
-            }).error(function() {
-                defer.reject();
-            });
-
-            return defer.promise;
-        };
+        };     
  
         function Login(username, password, callback) {
-            //var data = 'grant_type=password&username=' + username + '&password=' + password,
               var headers={};
 
             headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
             $http({
                 method: 'POST',
-                url: 'http://aug2015.devilcrafter.com/token',
+                url: 'http://localhost:17649/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password' }, 
                 transformRequest: function (obj) {
@@ -95,6 +70,8 @@ angular.module('angularZomer2015App')
             _user.token = '';
             _user.isAuth = false;
         };
+
+        
  
         function SetCredentials(token) {           
  
@@ -103,8 +80,23 @@ angular.module('angularZomer2015App')
             });
 
             _user.token = token;
-            _user.isAuth = true;
+            GetMe().then(function(){
+                _user.isAuth = true;
 
-            return _user;
+            }, function(err){
+                console.log('error');
+            });
+        }
+
+        function GetMe(){
+            var header = {};
+            header.Authorization = _user.token;
+            header['Content-Type'] = 'application/x-www-form-urlencoded';
+
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:17649/api/account', 
+                headers: header
+            });
         }
 }]);

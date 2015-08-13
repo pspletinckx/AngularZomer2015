@@ -20,4 +20,12 @@ angular.module('angularZomer2015App')
     	$scope.vakantie = data;
     });
 
+    var _onUserLoggedIn = function(event, user) {
+                $scope.user = user;
+            };
+
+     $scope.$on('user:loggedIn', _onUserLoggedIn);
+
+
+
 });
