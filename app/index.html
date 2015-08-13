@@ -9,6 +9,10 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-gallery/css/blueimp-gallery.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-gallery/css/blueimp-gallery-indicator.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-gallery/css/blueimp-gallery-video.css" />
+    <link rel="stylesheet" href="bower_components/blueimp-bootstrap-image-gallery/css/bootstrap-image-gallery.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -23,7 +27,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header" id="header">
+    
+    <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -59,11 +64,11 @@
       </div>
     </div>
 
-    <div class="container" id="content">
+    <div class="container">
       <div ng-view=""></div>
     </div>
 
-    <div class="footer row" id="footer">
+    <div class="footer row">
       <div class="container">
 
       
@@ -91,6 +96,15 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-google-picker/dist/google-picker.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-helper.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery.js"></script>
+    <script src="bower_components/blueimp-gallery/js/jquery.blueimp-gallery.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery-fullscreen.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery-indicator.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery-video.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
+    <script src="bower_components/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
+    <!--<script src="bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js"></script>-->
     <!-- endbower -->
     <!-- endbuild -->
     <script src="http://apis.google.com/js/client.js"></script>
@@ -114,6 +128,7 @@
         <script src="scripts/controllers/register.js"></script>
 
         <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/services/netfoto.js"></script>
         <!-- endbuild -->
 </body>
 </html>

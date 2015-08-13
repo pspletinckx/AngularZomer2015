@@ -1,5 +1,28 @@
 <p>This is the about view.</p>
 
+
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
+
 <a href="javascript:;" lk-google-picker on-picked="onPicked" on-loaded="onLoaded" on-cancel="onCancel">Open my Google Drive</a>
 
 {{files}}
@@ -8,3 +31,9 @@
 </div>
 
 
+
+<div id="links" ng-repeat="afb in afbeeldingen">
+    <a href="{{afb.locatie}}" title="{{afb.titel}}" data-gallery>
+        <img src="{{afb.locatie}}" alt="{{afb.beschijving}}" height="200px">
+    </a>
+</div>

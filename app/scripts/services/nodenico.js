@@ -9,8 +9,6 @@
  */
 angular.module('angularZomer2015App')
   .factory('netNico', function ($http) {
-    // Service logic
-    // ...
 
     var vakantie = {};
 
