@@ -27,6 +27,7 @@ angular.module('angularZomer2015App')
 
             if(authData) {
                 _user.token = authData.token;
+                console.log(_user.token)
 
                 GetMe().then(function(){
 
@@ -50,7 +51,7 @@ angular.module('angularZomer2015App')
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:51698/token',
+                url: 'http://aug2015.devilcrafter.com/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password' }, 
                 transformRequest: function (obj) {
@@ -96,7 +97,7 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://localhost:51698/api/account', 
+                url: 'http://aug2015.devilcrafter.com/api/account', 
                 headers: header
             });
         }

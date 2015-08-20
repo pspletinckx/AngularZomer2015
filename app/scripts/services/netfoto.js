@@ -14,14 +14,14 @@ angular.module('angularZomer2015App')
     var foto = {};
 
     foto.getAll = function(){
-      return $http.get('http://localhost:51698/api/picture');
+      return $http.get('http://aug2015.devilcrafter.com/api/picture');
     }
 
     foto.post = function(imageRef){
     	var titel = imageRef.name;
     	var besc = imageRef.description;
     	var loc = imageRef.downloadUrl; 
-    	$http.post('http://localhost:51698/api/picture/',
+    	$http.post('http://aug2015.devilcrafter.com/api/picture/',
     		{
 				"vacation":1,
   				"titel":name,
@@ -31,7 +31,7 @@ angular.module('angularZomer2015App')
     }
     //bestaat deze
     foto.get = function(ref){
-      return $http.get('http://localhost:51698/api/picture/'+ref);
+      return $http.get('http://aug2015.devilcrafter.com/api/picture/'+ref);
     }
 
     //bestaat deze dan??

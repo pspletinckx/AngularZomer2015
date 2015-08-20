@@ -1,16 +1,26 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope',
-    function(AuthenticationService, UserService, $scope){
+.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams',
+    function(AuthenticationService, UserService, $scope, $routeParams){
 
     	var self = this;
     	self.isLid='';
     	self.isBetaler='';
-    	self.inschr ={};
 
     	$scope.user={};
     	$scope.maxDate = new Date();
+
+    	$scope.subscrModel = {
+		firstname: '',
+		lastName: '',
+		birthdate: '',
+		RNR: '',
+		password_confirmed: '',
+		phone_number: ''
+		};
+
+    self.vakantieId = $routeParams.id;
 
     	AuthenticationService.GetMe()
     	.success(function(response){
@@ -22,23 +32,29 @@ angular.module('angularZomer2015App')
 
     	});
 
+    	self.subscribe = subscribe;
+
+		function subscribe(){
+			console.log($scope.subscrModel)
+		}
+
+		$scope.submit = function(){
+			console.log('bla')
+		}
+
     	  $scope.today = function() {
     		$scope.dt = new Date();
-  };
+  		};
+
   $scope.today();
 
   $scope.clear = function () {
     $scope.dt = null;
   };
 
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
-  $scope.toggleMin();
-
   $scope.open = function($event) {
     $scope.status.opened = true;
-  };
+}
 
   $scope.dateOptions = {
     formatYear: 'yy',
@@ -81,11 +97,8 @@ angular.module('angularZomer2015App')
       }
     }
 return '';
-}
-self.subscribe = subscribe;
-function subscribe(){
-	console.log(self.inschr);
-	console.log('Blaaaaa')
-}
-return self;
-    }]);
+};
+
+console.log(self);
+
+}]);

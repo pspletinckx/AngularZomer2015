@@ -57,6 +57,7 @@ angular
       .when('/vakantie/:id/subscribe',{
         templateUrl: 'views/subscribe.html',
         controller: 'SubscribeCtrl',
+        controllerAs: 'self',
         access: {
           requiresLogin: true
         }

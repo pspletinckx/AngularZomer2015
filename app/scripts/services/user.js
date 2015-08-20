@@ -31,13 +31,13 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://localhost:17649/api/account/?username=' + username,
+                url: 'http://aug2015.devilcrafter.com/api/account/?username=' + username,
                 headers: header
             });
         }
  
         function Create(user, callback) {
-            $http.post('http://localhost:17649/api/account/register', user)
+            $http.post('http://aug2015.devilcrafter.com/api/account/register', user)
             .success(function(response){
                 callback(response);
             }).error(function(response){

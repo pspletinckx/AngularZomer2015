@@ -13,15 +13,15 @@ angular.module('angularZomer2015App')
     var vakantie = {};
 
     vakantie.getAll = function(){
-      return $http.get('http://localhost:51698/api/vacation');
+      return $http.get('http://aug2015.devilcrafter.com/api/vacation');
     }
 
     vakantie.get = function(ref){
-      return $http.get('http://localhost:51698/api/vacation/'+ref);
+      return $http.get('http://aug2015.devilcrafter.com/api/vacation/'+ref);
     }
 
     vakantie.post = function(vakantie){       
-      $http.post('http://localhost:51698/api/vacation/',
+      $http.post('http://aug2015.devilcrafter.com/api/vacation/',
         { vakantie             
         });
     }
