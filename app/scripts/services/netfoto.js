@@ -23,7 +23,7 @@ angular.module('angularZomer2015App')
     	var loc = imageRef.downloadUrl; 
     	$http.post('http://aug2015.devilcrafter.com/api/picture/',
     		{
-				"vacation":1,
+				  "vacation":1,
   				"titel":name,
   				"beschrijving":besc,
   				"locatie":loc

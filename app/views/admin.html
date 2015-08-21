@@ -43,12 +43,12 @@
 		<br/>		
 		<div class="add-border">			
 			<label class="col-xs-2 no-padding-left control-label">Title:</label>
-			<Input class="form-control col-xs-10 margin-bottom-5" type="text" ng-model="commentTitle" required/>
+			<Input class="form-control col-xs-10 margin-bottom-5" type="text" ng-model="commentTitle"/>
 			<label class="no-padding-left col-xs-12 control-label">Opmerking:</label>
-			<textarea class="form-control col-xs-12 margin-bottom-5" type="text" ng-model="commentHelper" required/>
+			<textarea class="form-control col-xs-12 margin-bottom-5" type="text" ng-model="commentHelper"/>
 			<label class="no-padding-left col-xs-2 ">Url:</label>
 			<Input class="col-xs-10 form-control" type="text" ng-model="commentUrl"/><br/>
-			<div><Input class="md-raised col-xs-3 btn pull-right" data-ng-Click="addComment()" type="button" value="Opmerking bijvoegen"></div>		
+			<div><Input class="col-xs-3 btn pull-right" data-ng-Click="addComment()" type="button" value="Opmerking bijvoegen"></div>		
 		</div>		<br />	
 		<label>Inbegrepen</label><br />	
 		<div class="add-border">
@@ -59,8 +59,11 @@
 			</div>
 			<div class="display-inherit"><Input class="col-xs-11 form-control" type="text" ng-model="includedItem"/>
 			<button class="md-raised col-xs-1 btn pull-right" data-ng-Click="addIncludedItem()" type="button"><i class="glyphicon glyphicon-plus"/></button></div>	
+			{{vakantie}}
 		</div>
+		<button class="no-margin-left btn btn-primary" data-ng-Click="submit()">Voeg vakantie toe</button>
+		<button class="no-margin-left btn btn-warning" data-ng-Click="fillIn()">Vul in</button>
 	</form>
 </div>
 <br />
-<md-button class="md-raised no-margin-left" data-ng-Click="submit()">Voeg vakantie toe</md-button>
+

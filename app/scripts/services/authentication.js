@@ -4,7 +4,7 @@ angular.module('angularZomer2015App')
 .factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService', 
     function($http, $cookieStore, $q, $rootScope,  $timeout, UserService, localStorageService){
 
-        var baseUrl = 'http://localhost:17649'
+        var baseUrl = 'http://localhost:51698/' 
         var service = {}, 
         _user = {
             email: '',
@@ -51,7 +51,7 @@ angular.module('angularZomer2015App')
 
             $http({
                 method: 'POST',
-                url: 'http://aug2015.devilcrafter.com/token',
+                url: baseUrl + '/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password' }, 
                 transformRequest: function (obj) {
@@ -97,7 +97,7 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://aug2015.devilcrafter.com/api/account', 
+                url: baseUrl + '/api/account', 
                 headers: header
             });
         }

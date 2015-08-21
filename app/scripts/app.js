@@ -19,8 +19,7 @@ angular
     'ngMaterial',
     'lk-google-picker',
     'ngMaterial', 
-    'LocalStorageModule', 
-    'ui.bootstrap'
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
