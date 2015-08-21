@@ -52,7 +52,7 @@
               <li ng-class="{active:isUrl('/')}"><a href="#/">Home</a></li>
               <li ng-class="{active:isUrl('/lijst')}"><a ng-href="#/lijst">Vakanties</a></li>
               <li ng-class="{active:isUrl('/about')}"><a ng-href="#/about">Fotoboek</a></li>
-              <li ng-class="{active:isUrl('/test')}"ng-show="user.role=='Admin'"><a ng-href="#/test">Admin</a></li>
+              <li ng-class="{active:isUrl('/test')}"ng-show="user.isAdmin"><a ng-href="#/test">Admin</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a ng-href="#/register" ng-hide="user.isAuth" aria-label="Registreren">Registreer</a></li>
@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="">
       <div ng-view=""></div>
     </div>
 
@@ -98,13 +98,12 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-helper.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery.js"></script>
-    <script src="bower_components/blueimp-gallery/js/jquery.blueimp-gallery.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-fullscreen.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-indicator.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-video.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
-    <!--<script src="bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js"></script>-->
+    <script src="bower_components/blueimp-bootstrap-image-gallery/js/bootstrap-image-gallery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="http://apis.google.com/js/client.js"></script>
@@ -129,6 +128,7 @@
         <script src="scripts/controllers/subscribe.js"></script>
         <script src="scripts/controllers/nav.js"></script>
         <script src="scripts/services/netfoto.js"></script>
+        <script src="scripts/controllers/home.js"></script>
         <!-- endbuild -->
 </body>
 </html>

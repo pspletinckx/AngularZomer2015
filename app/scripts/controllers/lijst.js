@@ -9,12 +9,15 @@
  */
 angular.module('angularZomer2015App')
   .controller('LijstCtrl', function ($scope,nodePieter,netNico) {
-
     $scope.vakanties = [];
-
     netNico
     .getAll()
     .success(function(data){
     	$scope.vakanties = data;
     });
+
+    $scope.filterFunction = function(element) {
+    return element.name.match(/^Ma/) ? true : false;
+  };
+
   });

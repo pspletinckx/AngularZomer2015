@@ -24,11 +24,11 @@ angular.module('angularZomer2015App')
         }
  
         function GetByUsername(username) {
-            return $http.get('http://localhost:17649/api/account/?username=' + username).then(handleSuccess, handleError('Error getting user by username'));
+            return $http.get('http://localhost:51698/api/account/?username=' + username).then(handleSuccess, handleError('Error getting user by username'));
         }
  
         function Create(user, callback) {
-            $http.post('http://localhost:17649/api/account/register', user)
+            $http.post('http://localhost:51698/api/account/register', user)
             .success(function(response){
                 callback(response);
             }).error(function(response){

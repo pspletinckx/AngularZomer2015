@@ -2,24 +2,39 @@
 <p>Hier moet nog een filter komen</p>
 <form>
 	<select class="form-control">
-		<option>9-jarigen</option>
-		<option>10-jarigen</option>
-		<option>11-jarigen</option>
-		<option>12-jarigen</option>
-		<option>13-jarigen</option>
+		<option value="9">9-jarigen</option>
+		<option value="11">10-jarigen</option>
+		<option value="12">11-jarigen</option>
+		<option value="13">12-jarigen</option>
+		<option value="14">13-jarigen</option>
 	</select>
-	<input type="checkbox">
+
+		<select class="form-control">
+		<option value="zomer">Zomervakantie</option>
+		<option value="herfst">Herfstvakantie</option>
+		<option value="kerst">Kerstvakantie</option>
+		<option value="paas">Paasvakantie</option>
+
+	</select>
+
+	<input ng-model="query" type="text" placeholder="Zoek overal" autofocus class="form-control">
 </form>
 
 
 </div>
 <div ng-app="LijstCtrl">
 	<div class="row">
-<div class="col-xs-4" ng-repeat="vakantie in vakanties">
+<div class="col-xs-4" ng-repeat="vakantie in vakanties | filter:query | orderBy: 'wanneer.date_begin' ">
 			<a href="#/vakantie/{{vakantie.id}}" class="thumbnail">
 			<img ng-src="{{vakantie.cover_foto.locatie}}" width="100%">
 			<h3 class="caption">{{vakantie.titel}}</h3>
 			</a>
+			<h4>searchparams</h4>
+			<p>{{vakantie.wanneer.date_begin|date}}</p>
+			<p>{{vakantie.wanneer.date_end|date}}</p>
+			<p>{{vakantie.prijs.basis}}</p>
+			<p>{{vakantie.leeftijd.min_leeftijd}}</p>
+			<p>{{vakantie.leeftijd.max_leeftijd}}</p>
 </div>
 
 </div>
