@@ -4,6 +4,7 @@ angular.module('angularZomer2015App')
 .factory('UserService', ['$http', 'localStorageService',
     function($http, localStorageService){
 
+        var baseurl = 'http://localhost:51698';
         var service = {};
  
         service.GetAll = GetAll;
@@ -31,13 +32,13 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://aug2015.devilcrafter.com/api/account/?username=' + username,
+                url: baseurl + '/api/account/?username=' + username,
                 headers: header
             });
         }
  
         function Create(user, callback) {
-            $http.post('http://aug2015.devilcrafter.com/api/account/register', user)
+            $http.post(baseurl + '/api/account/register', user)
             .success(function(response){
                 callback(response);
             }).error(function(response){
