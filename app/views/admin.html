@@ -11,19 +11,19 @@
 		<label>Max.Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.max_leeftijd" type="text"/><br/>
 		<label class="col-xs-4 no-padding-left">Begindatum: {{vakantie.wanneer.date_begin|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_begin" type="date"/><br/>
 		<label class="col-xs-4 no-padding-left">Einddatum: {{vakantie.wanneer.date_end|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_end" type="date"/><br/>
-		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="AdminCtrl.vakantie.aantal_deelnemers" type="text"/>
+		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="vakantie.aantal_deelnemers" type="text"/>
 
 		<h3>Locatie</h3>
 		<hr/>
 		<label>Vakantiedomein</label><Input class="form-control" ng-model="vakantie.waar.vakantie_domein" type="text"/><br/>
-		<label>Stad</label><Input class="form-control" ng-model="AdminCtrl.vakantie.waar.stad" type="text"/>
+		<label>Stad</label><Input class="form-control" ng-model="vakantie.waar.stad" type="text"/>
 		
 		<h3>Prijs</h3>
 		<hr/>
 		<label>Basisprijs</label><Input class="form-control" ng-model="vakantie.prijs.basis" type="text"/><br/>
 		<label>Prijs enkele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_enkel" type="text"/><br/>
 		<label>Prijs dubbele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_dubbel" type="text"/><br/>		
-		<label>Fiscaal voordeel</label><Input ng-model="vakantie.prijs.fiscaal_voordeel" type="checkbox"/><br/>
+		<label>Fiscaal voordeel</label><Input ng-model="vakantie.fiscaal_voordeel" type="checkbox"/><br/>
 
 		<h3>Contactinformatie</h3>
 		<hr/>
@@ -62,7 +62,6 @@
 			{{vakantie}}
 		</div>
 		<button class="no-margin-left btn btn-primary" data-ng-Click="submit()">Voeg vakantie toe</button>
-		<button class="no-margin-left btn btn-warning" data-ng-Click="fillIn()">Vul in</button>
 	</form>
 </div>
 <br />
