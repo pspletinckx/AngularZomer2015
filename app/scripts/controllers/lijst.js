@@ -7,6 +7,7 @@
  * # LijstCtrl
  * Controller of the angularZomer2015App
  */
+
 angular.module('angularZomer2015App')
   .controller('LijstCtrl', function ($scope,nodePieter,netNico) {
 
@@ -17,4 +18,4 @@ angular.module('angularZomer2015App')
     .success(function(data){
     	$scope.vakanties = data;
     });
-  });
+ });

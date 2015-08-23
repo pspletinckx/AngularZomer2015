@@ -18,8 +18,8 @@ angular.module('angularZomer2015App')
     .get(self.vakantieId)
     .success(function(data){
     	$scope.vakantie = data;
-      $rootscope.minLeeftijd = $scope.vakantie.leeftijd.min_leeftijd;
-      $rootscope.maxLeeftijd = $scope.vakantie.leeftijd.max_leeftijd;
+     // $rootscope.minLeeftijd = $scope.vakantie.leeftijd.min_leeftijd;
+      //$rootscope.maxLeeftijd = $scope.vakantie.leeftijd.max_leeftijd;
     });
 
     var _onUserLoggedIn = function(event, user) {

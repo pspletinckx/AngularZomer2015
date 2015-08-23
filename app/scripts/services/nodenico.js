@@ -8,7 +8,7 @@
  * Factory in the angularZomer2015App.
  */
 angular.module('angularZomer2015App')
-  .factory('netNico',['$http', 'localStorageService', function ($http, localStorageService) {
+  .factory('netNico',['$http', 'localStorageService', '$window', function ($http, localStorageService, $window) {
 
     var vakantie = {};
     var host = "http://localhost:51698/"
@@ -32,7 +32,15 @@ angular.module('angularZomer2015App')
        data: vakantie
       }      
       
-      $http.post(host + 'api/vacation/', vakantie, req );
+      $http.post(host + 'api/vacation/', vakantie, req).then(
+        function(response){
+          $window.location.href = '/#/vakantie/'+response.data;
+          console.log(response.data);
+        },
+        function(response){}
+        );
+
+      
     }
 
     // Public API here

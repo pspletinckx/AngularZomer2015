@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('angularZomer2015App').
 
 directive('rrn', function() {
