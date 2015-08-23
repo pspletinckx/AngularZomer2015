@@ -8,7 +8,7 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('VakantieCtrl', function ($scope,$routeParams,netNico) {
+  .controller('VakantieCtrl',['$scope', '$routeParams', 'netNico', '$rootScope', function ($scope,$routeParams,netNico,$rootscope) {
 
   	var self = this;
   	self.vakantieId = $routeParams.id;
@@ -28,4 +28,4 @@ angular.module('angularZomer2015App')
 
      $scope.$on('user:loggedIn', _onUserLoggedIn);
 
-});
+}]);
