@@ -1,34 +1,49 @@
-<div id="blueimp-gallery" class="blueimp-gallery">
-    <div class="slides"></div>
-    <h3 class="title"></h3>
-    <a class="prev">‹</a>
-    <a class="next">›</a>
-    <a class="close">×</a>
-    <a class="play-pause"></a>
-    <ol class="indicator"></ol>
-</div>
+<div class="container-fluid">
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
 
 
-<script>
-document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
+    <script>
+    document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
         link = target.src ? target.parentNode : target,
         options = {index: link, event: event},
         links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-};
-</script>
-<div class="row">
-<a href="javascript:;" lk-google-picker on-picked="onPicked" on-loaded="onLoaded" on-cancel="onCancel">Open my Google Drive</a>
-<md-button class="md-raised">Voeg foto's toe</md-button>
+        blueimp.Gallery(links, options);
+    };
+    </script>
+    <div class="row">
+        <a href="javascript:;" lk-google-picker on-picked="onPicked" on-loaded="onLoaded" on-cancel="onCancel">
+            <md-button class="md-raised">Voeg foto's toe</md-button>
+        </a>
 
+    </div>
 
-</div>
+    <div ng-repeat="file in files" class="row well">
+        <div class="col-sm-5">
+            <img ng-src="{{file.downloadUrl}}" alt="{{file.name}}" height ="200px" margin="2px" >
+        </div>
 
-<div ng-repeat="file in files">
-    <img ng-src="{{file.downloadUrl}}" alt="{{file.name}}" height ="200px" margin="2px">
-</div>
+        <form class="col-sm-7" ng-submit="fotoToevoegen(file)" novalidate>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Titel</label>
+                <input ng-model="file.name"  class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="beschrijvingInput">Beschrijving</label>
+                <textarea ng-model="file.description" id="beschrijvingInput" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
 
 <div id="links">
     <div ng-repeat="afb in afbeeldingen">
@@ -36,4 +51,5 @@ document.getElementById('links').onclick = function (event) {
             <img ng-src="{{afb.locatie}}" alt="{{afb.beschijving}}" height="200px">
         </a>
     </div>
+</div>
 </div>

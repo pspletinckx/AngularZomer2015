@@ -9,6 +9,14 @@
  */
 angular.module('angularZomer2015App')
   .controller('AdminCtrl', function ($scope, netNico) {
+    $scope.submitted= false;
+    $scope.commentSubmitted=false;
+    $scope.commentValid = false;
+    $scope.commentValidated=false;
+    $scope.commentTitleMissing=false;
+    $scope.commentDescriptionMissing=false;
+    $scope.showIncludedItemRequired=false;
+
   	$scope.commentHelper = "";
     $scope.commentTitle = "";
     $scope.commentUrl = "";
@@ -28,11 +36,37 @@ angular.module('angularZomer2015App')
    		fiscaal_voordeel: false
    	}
 
+    $scope.commentValidation = function(){
+      $scope.commentValidated = true;
+
+      if(!$scope.commentHelper){
+        $scope.commentDescriptionMissing = true;
+      }else{
+        $scope.commentDescriptionMissing = false;
+      }
+
+      if(!$scope.commentTitle){
+        $scope.commentTitleMissing = true;
+      }else{
+        $scope.commentTitleMissing = false;
+      }
+
+      if($scope.commentTitleMissing || $scope.commentDescriptionMissing){
+        $scope.commentValid = false;
+      }
+      else{
+        $scope.commentValid = true;
+      }
+    }
+
    	$scope.addComment = function(){
-   		$scope.vakantie.opmerking.push({text: $scope.commentHelper, titel: $scope.commentTitle, url: $scope.commentUrl});
-      $scope.commentHelper = "";
-      $scope.commentTitle = "";
-      $scope.commentUrl = "";
+      $scope.commentValidation();
+      if($scope.commentValid){
+     		$scope.vakantie.opmerking.push({text: $scope.commentHelper, titel: $scope.commentTitle, url: $scope.commentUrl});
+        $scope.commentHelper = "";
+        $scope.commentTitle = "";
+        $scope.commentUrl = "";
+      }
    	}
 
     $scope.removeComment = function(index){
@@ -40,8 +74,13 @@ angular.module('angularZomer2015App')
     }
 
     $scope.addIncludedItem = function(){
-      $scope.vakantie.inbegrepen.push({basis: $scope.includedItem});
-      $scope.includedItem = "";
+      if(!$scope.includedItem){
+        $scope.showIncludedItemRequired = true;
+      }else{
+        $scope.showIncludedItemRequired = false;
+        $scope.vakantie.inbegrepen.push({basis: $scope.includedItem});
+        $scope.includedItem = "";
+      }      
     }
 
     $scope.removeIncludedItem = function(index){
@@ -49,6 +88,14 @@ angular.module('angularZomer2015App')
     }
 
     $scope.submit = function(){
+            $scope.includedItem = "";
+      $scope.showIncludedItemRequired = false;
+
+      $scope.commentHelper = "";
+      $scope.commentTitle = "";
+      $scope.commentUrl = "";
+      $scope.commentTitleMissing = false;
+      $scope.commentDescriptionMissing = false;
       netNico.post($scope.vakantie);
 
     }

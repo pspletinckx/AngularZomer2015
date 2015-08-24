@@ -1,34 +1,62 @@
-<h2> Vakantie toevoegen </h2>
-<hr/>
+<div class="container">
+	<h2> Vakantie toevoegen </h2>
+	<hr/>
+	<form class="" name="vakantieForm" ng-controller = "AdminCtrl" ng-submit="vakantieForm.$valid && submit()" novalidate>		
+	<form class="" name="vakantieForm" ng-controller = "AdminCtrl">		<br />
 
-</div>
-	<form class="" name="vakantieForm" ng-controller = "AdminCtrl">		
 		<h3>Algemene informatie</h3>
 		<hr/>
-		<label for="titel" class="">Titel</label><Input id="titel" class="form-control" ng-model="vakantie.titel" type="text"/><br/>	
-		<label>Promotext</label><textarea class="form-control" ng-model="vakantie.promotext" type="text"/><br/>
-		<label>Min. Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.min_leeftijd" type="text"/><br/>
-		<label>Max.Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.max_leeftijd" type="text"/><br/>
-		<label class="col-xs-4 no-padding-left">Begindatum: {{vakantie.wanneer.date_begin|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_begin" type="date"/><br/>
-		<label class="col-xs-4 no-padding-left">Einddatum: {{vakantie.wanneer.date_end|date}}</label><Input class="form-control" ng-model="vakantie.wanneer.date_end" type="date"/><br/>
-		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="vakantie.aantal_deelnemers" type="text"/>
+		<label for="titel" class="">Titel</label><Input id="titel" name="titel" class="form-control" ng-model="vakantie.titel" type="text" required="Gelieve een titel in te vullen."/>
+		<!-- invalid css klasse is een zelfgemaakte klasse om een duidelijkere foutmelding te geven terwijl het toch de kleuren van bootstrap gebruikt -->
+		<span ng-show="(submitted ||vakantieForm.titel.$dirty) && vakantieForm.titel.$error.required" class="help-block invalid">Gelieve een titel in te vullen.</span><br/>
+
+		<label>Promotext</label><textarea class="form-control" ng-model="vakantie.promotext" type="text" name="promo" required="Gelieve de promotext in te vullen"/>
+		<span ng-show="(submitted ||vakantieForm.promo.$dirty) && vakantieForm.promo.$error.required" class="help-block invalid">Gelieve de promotext in te vullen.</span><br/>
+
+		<label>Min. Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.min_leeftijd" name="min_leeftijd" type="text" required="Geef een minimum leeftijd op"/>
+		<span ng-show="(submitted ||vakantieForm.min_leeftijd.$dirty) && vakantieForm.min_leeftijd.$error.required" class="help-block invalid">Geef een minimum leeftijd op.</span><br/>
+
+		<label>Max.Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.max_leeftijd" name="max_leeftijd" type="text" required="Geef een maximum leeftijd op"/>
+		<span ng-show="(submitted ||vakantieForm.max_leeftijd.$dirty) && vakantieForm.max_leeftijd.$error.required" class="help-block invalid">Geef een maximum leeftijd op.</span><br/>
+		<label class="col-xs-4 no-padding-left">Begindatum: {{vakantie.wanneer.date_begin|date}}</label><Input class="form-control" name="begindate"ng-model="vakantie.wanneer.date_begin" type="date" required="Geef een begindatum op."/>
+		<span ng-show="(submitted ||vakantieForm.begindate.$dirty) && vakantieForm.begindate.$error.required" class="help-block invalid">Geef een begindatum op.</span><br/>
+
+		<label class="col-xs-4 no-padding-left">Einddatum: {{vakantie.wanneer.date_end|date}}</label><Input class="form-control" name="enddate" ng-model="vakantie.wanneer.date_end" type="date" required="Geef een einddatum op."/><span ng-show="(submitted ||vakantieForm.enddate.$dirty) && vakantieForm.enddate.$error.required" class="help-block invalid">Geef een einddatum op.</span><br/>
+
+		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="vakantie.aantal_deelnemers" type="text" required="Vul het maximum aantal deelnemers in."/><span ng-show="(submitted ||vakantieForm.enddate.$dirty) && vakantieForm.enddate.$error.required" class="help-block invalid">Vul het maximum aantal deelnemers in.
+		</span>
+
 
 		<h3>Locatie</h3>
 		<hr/>
-		<label>Vakantiedomein</label><Input class="form-control" ng-model="vakantie.waar.vakantie_domein" type="text"/><br/>
-		<label>Stad</label><Input class="form-control" ng-model="vakantie.waar.stad" type="text"/>
+		<label>Vakantiedomein</label><Input class="form-control" name="domein" ng-model="vakantie.waar.vakantie_domein" type="text" required="Geef het vakantiedomein in."/>
+		<span ng-show="(submitted ||vakantieForm.domein.$dirty) && vakantieForm.domein.$error.required" class="help-block invalid">Geef het vakantiedomein in.</span><br/>
+
+		<label>Stad</label><Input class="form-control" ng-model="vakantie.waar.stad" name="stad" type="text" required="Geef de stad in."/>
+		<span ng-show="(submitted ||vakantieForm.stad.$dirty) && vakantieForm.stad.$error.required" class="help-block invalid">Geef de stad in.</span><br/>
 		
 		<h3>Prijs</h3>
 		<hr/>
-		<label>Basisprijs</label><Input class="form-control" ng-model="vakantie.prijs.basis" type="text"/><br/>
-		<label>Prijs enkele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_enkel" type="text"/><br/>
-		<label>Prijs dubbele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_dubbel" type="text"/><br/>		
+		<label>Basisprijs</label><Input class="form-control" ng-model="vakantie.prijs.basis" name="basisprijs" type="text" required="Geef een basisprijs in."/>
+		<span ng-show="(submitted ||vakantieForm.basisprijs.$dirty) && vakantieForm.basisprijs.$error.required" class="help-block invalid">Geef een basisprijs in.</span><br/>
+
+		<label>Prijs enkele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_enkel" name="enkelster" type="text" required="Geef de enkele ster prijs in."/>		
+		<span ng-show="(submitted ||vakantieForm.enkelster.$dirty) && vakantieForm.enkelster.$error.required" class="help-block invalid">Geef de enkele ster prijs in.</span><br/>
+
+		<label>Prijs dubbele ster</label><Input class="form-control" ng-model="vakantie.prijs.ster_dubbel" name="dubbelster" type="text" required="Geef de dubbele ster prijs in."/>
+		<span ng-show="(submitted ||vakantieForm.dubbelster.$dirty) && vakantieForm.dubbelster.$error.required" class="help-block invalid">Geef de dubbele ster prijs in.</span><br/>		
 		<label>Fiscaal voordeel</label><Input ng-model="vakantie.fiscaal_voordeel" type="checkbox"/><br/>
+
 
 		<h3>Contactinformatie</h3>
 		<hr/>
-		<label>Telefoonnummer</label><Input class="form-control" ng-model="vakantie.informatie.tel" type="text"/><br/>
-		<label>E-mail</label><Input class="form-control" ng-model="vakantie.informatie.email" type="text"/>
+		<label>Telefoonnummer</label><Input class="form-control" ng-model="vakantie.informatie.tel" type="text" name="tel" required="Geef een telefoonnummer op."/>
+		<span ng-show="(submitted ||vakantieForm.tel.$dirty) && vakantieForm.tel.$error.required" class="help-block invalid">Geef een telefoonnummer op.</span><br/>
+
+		<label>E-mail</label><Input class="form-control" type="email" ng-model="vakantie.informatie.email" name="email" type="text" required="Geef een e-mailadres op."/>
+		<span ng-show="(submitted ||vakantieForm.email.$dirty) && vakantieForm.email.$error.required" class="help-block invalid">Geef een e-mailadres op.</span><br/>
+		<span ng-show="(submitted ||vakantieForm.email.$dirty) && vakantieForm.email.$error.email" class="help-block invalid">Dit is geen geldig e-mailadres.</span><br/>
+
 
 		<h3>Bijkomende informatie</h3>
 		<hr/>
@@ -37,20 +65,30 @@
 			<div class="add-border">
 				<div><strong class="opmerking-label no-padding-left">Titel:</strong><span>{{op.titel}}</span></div>
 				<div><strong class="opmerking-label no-padding-left">Opmerking:</strong><span class="margin-bottom-5">{{op.text}}</span></div>
-				<div><strong class="opmerking-label no-padding-left">Url:</strong><span>{{op.url}}</label><button class="md-raised btn pull-right btn-danger" data-ng-Click="removeComment($index)" type="button"><i class="glyphicon glyphicon-remove"/></button></div>
+				<div><strong class="opmerking-label no-padding-left">Url:</strong><span>{{op.url}}</label>
+					<button class="md-raised btn pull-right btn-danger" data-ng-Click="removeComment($index)" type="button">
+						<i class="glyphicon glyphicon-remove"/>
+					</button></div>
 			</div>
 		</div>
 		<br/>		
+
 		<div class="add-border">			
 			<label class="col-xs-2 no-padding-left control-label">Title:</label>
-			<Input class="form-control col-xs-10 margin-bottom-5" type="text" ng-model="commentTitle"/>
+			<Input class="form-control col-xs-10 margin-bottom-5" name="commentTitle" type="text" ng-model="commentTitle"/>
+			<span ng-show="(commentValidated || vakantieForm.commentTitle.$dirty) && commentTitleMissing" class="help-block invalid">Geef de opmerking een titel.</span>
+
 			<label class="no-padding-left col-xs-12 control-label">Opmerking:</label>
-			<textarea class="form-control col-xs-12 margin-bottom-5" type="text" ng-model="commentHelper"/>
-			<label class="no-padding-left col-xs-2 ">Url:</label>
-			<Input class="col-xs-10 form-control" type="text" ng-model="commentUrl"/><br/>
+			<textarea class="form-control col-xs-12 margin-bottom-5" name="commentText" type="text" ng-model="commentHelper"/>
+			<span ng-show="(commentValidated || vakantieForm.commentText.$dirty) && commentTitleMissing" class="help-block invalid">Vul een opmerking in.</span>
+
+			<label class="no-padding-left col-xs-2 ">Url: </label>
+			<Input class="col-xs-10 form-control" type="url" name="commentLink" ng-model="commentUrl"/><br/>
+			<span ng-show="vakantieForm.commentLink.$error.url" class="help-block invalid">Vul een geldige url in (http://www.voorbeeld.com).</span>
 			<div><Input class="col-xs-3 btn pull-right" data-ng-Click="addComment()" type="button" value="Opmerking bijvoegen"></div>		
-		</div>		<br />	
-		<label>Inbegrepen</label><br />	
+		</div><br />	
+
+		<label>Inbegrepen</label><br /><br />
 		<div class="add-border">
 			<div  class="display-inherit" ng-repeat="item in vakantie.inbegrepen">
 				<div class="full-width display-inherit">
@@ -59,10 +97,11 @@
 			</div>
 			<div class="display-inherit"><Input class="col-xs-11 form-control" type="text" ng-model="includedItem"/>
 			<button class="md-raised col-xs-1 btn pull-right" data-ng-Click="addIncludedItem()" type="button"><i class="glyphicon glyphicon-plus"/></button></div>	
-			{{vakantie}}
-		</div>
-		<button class="no-margin-left btn btn-primary" data-ng-Click="submit()">Voeg vakantie toe</button>
+			<span ng-show="showIncludedItemRequired" class="help-block invalid">Dit veld kan niet leeg zijn.</span>
+		</div><br/>
+		<input type="submit" class="no-margin-left btn btn-primary" data-ng-click="submitted=true" value="Voeg vakantie toe"></input>
+
 	</form>
 </div>
-<br />
+<br/>
 

@@ -1,5 +1,6 @@
 
 
+<div class="container">
 	<div class="col-md-6 col-sx-12">
 		<md-card>
 		<img ng-src="{{vakantie.cover_foto.locatie}}" width="100%">
@@ -12,76 +13,78 @@
 		<p class="label label-info">{{vakantie.wanneer.date_begin|date}} tot {{vakantie.wanneer.date_end|date}} </p>
 		<p class="label label-info">{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
 
-		</md-card>
+	</md-card>
 	</div>
-<div class="col-md-6 col-sx-12">
-	<div class="panel-group">
-		<div class="panel panel-default">
-		  <div class="panel-heading">Details</div>
-		  <div class="panel-body">
-		  	<p>{{vakantie.promotext}}</p>
-		  	<p>{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
-		  	<h4 ng-show ="vakantie.wie.length>1">Aanbod voor meerdere leeftijden</h4>
-		  	<p> {{vakantie.leeftijd.min_leeftijd}}- tot {{vakantie.leeftijd.max_leeftijd}}-jarigen</p>
-		  </div>
-		</div>
+	<div class="col-md-6 col-sx-12">
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">Details</div>
+				<div class="panel-body">
+					<p>{{vakantie.promotext}}</p>
+					<p>{{vakantie.waar.vakantie_domein}}, {{vakantie.waar.stad}}</p>
+					<h4 ng-show ="vakantie.wie.length>1">Aanbod voor meerdere leeftijden</h4>
+					<p> {{vakantie.leeftijd.min_leeftijd}}- tot {{vakantie.leeftijd.max_leeftijd}}-jarigen</p>
 
-		<div class="panel panel-default">
-		  <div class="panel-heading">Prijs</div>
-		  <div class="panel-body">
-		  	<table class="table">
-		  		<tr>
-		  			<td>Basisprijs:</td>
-		  			<td>{{vakantie.prijs.basis}}</td>
-		  		</tr>
-		  		<tr>
-		  			<td>Bond Moyson 1 ouder prijs:</td>
-		  			<td>{{vakantie.prijs.ster_enkel}}</td>
-		  		</tr>
-		  		<tr>
-		  			<td>Bond Moyson beide ouders:</td>
-		  			<td>{{vakantie.prijs.ster_dubbel}}</td>
-		  		</tr>
-		  	</table>
-		  	<a ng-href="#/vakantie/{{vakantie.id}}/subscribe" class="btn btn-primary" aria-disabled="false"ng-show="user.isAuth" >BOEK NU</a>
-		  </div>
-		</div>
+				</div>
+			</div>
 
-		<div class="panel panel-default">
-		  <div class="panel-heading">Inbegrepen in de vakantie</div>
-		  <div class="panel-body">
-		  	<ul>
-		  		<li ng-repeat="incl in vakantie.inbegrepen">{{incl.basis}}</li>
-		  	</ul>
-		  </div>
-		</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Prijs</div>
+				<div class="panel-body">
+					<table class="table">
+						<tr>
+							<td>Basisprijs:</td>
+							<td>{{vakantie.prijs.basis}}</td>
+						</tr>
+						<tr>
+							<td>Bond Moyson 1 ouder prijs:</td>
+							<td>{{vakantie.prijs.ster_enkel}}</td>
+						</tr>
+						<tr>
+							<td>Bond Moyson beide ouders:</td>
+							<td>{{vakantie.prijs.ster_dubbel}}</td>
+						</tr>
+					</table>
+					<a ng-href="#/vakantie/{{vakantie.id}}/subscribe" class="btn btn-primary" aria-disabled="false"ng-show="user.isAuth" >BOEK NU</a>
+				</div>
+			</div>
 
-		<div class="panel panel-default">
-		  <div class="panel-heading">Meer</div>
-		  <div class="panel-body">
-		  	<div ng-repeat="opm in vakantie.opmerking">
-		  		<a ng-href="{{opm.url}}">
-		  			<h4>{{opm.Titel}}</h4>
-		  			<p> {{opm.text}}</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">Inbegrepen in de vakantie</div>
+				<div class="panel-body">
+					<ul>
+						<li ng-repeat="incl in vakantie.inbegrepen">{{incl.basis}}</li>
+					</ul>
+				</div>
+			</div>
 
-		  		</a>
-		  	</div>
-		  	<a></a>
-		  </div>
-		</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">Meer</div>
+				<div class="panel-body">
+					<div ng-repeat="opm in vakantie.opmerking">
+						<a ng-href="{{opm.url}}">
+							<h4>{{opm.Titel}}</h4>
+							<p> {{opm.text}}</p>
 
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		  	<h4 class ="panel-title">
-		  		<a data-toggle="collapse" data-target="#informatie">Informatie</a>
-		  	</h4>
-		  </div>
-		  <div id="informatie" class="panel-collapse">
-			  <div class="panel-body">
-			  	<p>{{vakantie.informatie.tel}}</p>
-			  	<a ng-href="mailto:{{vakantie.informatie.email}}">{{vakantie.informatie.email}}</a>
-			  </div>
-		  </div>
+						</a>
+					</div>
+					<a></a>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class ="panel-title">
+						<a data-toggle="collapse" data-target="#informatie">Informatie</a>
+					</h4>
+				</div>
+				<div id="informatie" class="panel-collapse">
+					<div class="panel-body">
+						<p>{{vakantie.informatie.tel}}</p>
+						<a ng-href="mailto:{{vakantie.informatie.email}}">{{vakantie.informatie.email}}</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
