@@ -1,50 +1,57 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams',
-    function(AuthenticationService, UserService, $scope, $routeParams){
+.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams', 'SubscribeService',
+    function(AuthenticationService, UserService, $scope, $routeParams, SubscribeService){
 
     	var self = this;
-    	self.isLid='';
-    	self.isBetaler='';
+    	self.isBetaler=null;
+      self.vakantieId = $routeParams.id;
+      self.subscribe = subscribe;
 
     	$scope.user={};
     	$scope.maxDate = new Date();
 
     	$scope.subscrModel = {
-		firstname: '',
-		lastName: '',
-		birthdate: '',
-		RNR: '',
-		password_confirmed: '',
-		phone_number: ''
-		};
+        SubscriptionForVacationId: self.vakantieId,
+        Betaald: false,
+		  };
 
-    self.vakantieId = $routeParams.id;
+      function getUser(){
+        AuthenticationService.GetMe()
+      .success(function(response){
+        UserService.GetByUsername(response.userName)
+        .success(function(response){
+          $scope.user = response;
+        });
+      }).error(function(response){
+      });
+    }
+    getUser();
 
-    	AuthenticationService.GetMe()
-    	.success(function(response){
-    		UserService.GetByUsername(response.userName)
-    		.success(function(response){
-    			$scope.user = response;
-    		})
-    	}).error(function(response){
-
-    	});
-
-    	self.subscribe = subscribe;
 
 		function subscribe(){
-			console.log($scope.subscrModel)
-		}
+      if (self.isBetaler){
+        $scope.subscrModel.Naam_Betalingspersoon = $scope.user.firstName + ' ' + $scope.user.lastName;
+        $scope.subscrModel.Adres_Betalingspersoon = $scope.user.street + ' ' + $scope.user.houseNr + ' ' + $scope.user.postalCode + ' ' + $scope.user.city;
+      }else
+      {
+        $scope.subscrModel.Adres_Betalingspersoon = $scope.AdresBetaler + ' ' +  $scope.stadBetaler;
+      }
+      $scope.subscrModel.SubscribedUserId = $scope.user.id;
+      $scope.subscrModel.Email = $scope.Email;
 
-		$scope.submit = function(){
-			console.log('bla')
-		}
+      SubscribeService.subscribe($scope.subscrModel)
+      .then(function(response){
+      }, function(response){
+      });
+		};
 
-    	  $scope.today = function() {
+    
+
+    $scope.today = function() {
     		$scope.dt = new Date();
-  		};
+  	};
 
   $scope.today();
 
@@ -98,7 +105,4 @@ angular.module('angularZomer2015App')
     }
 return '';
 };
-
-console.log(self);
-
 }]);

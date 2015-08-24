@@ -6,7 +6,7 @@
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required || form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength}">    
             <label for="rijksregisternummer">Rijksregisternummer</label>      
-            <input class="form-control" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="vm.user.RNR" required rrn />
+            <input class="form-control" placeholder="vb. 92110532975" ng-minlength= "11" ng-maxlength="11" type="text" name="rijksregisternummer" id="Text1" class="form-control" ng-model="vm.user.RNR" required rrn />
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.required" class="help-block">Rijksregisternummer is verplicht</span>
             <span ng-show="form.rijksregisternummer.$dirty && form.rijksregisternummer.$error.rrn || form.rijksregisternummer.$error.maxlength || form.rijksregisternummer.$error.minlength" class="help-block">Geen geldig rijksregisternummer</span>
         </div>
