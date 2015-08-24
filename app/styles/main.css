@@ -165,4 +165,6 @@ fieldset {
 #links div{
   display: inline;
 }
-
+.mainContent{
+  min-height: 400px;
+}
