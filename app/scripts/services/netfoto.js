@@ -8,7 +8,7 @@
  * Service in the angularZomer2015App.
  */
 angular.module('angularZomer2015App')
-  .factory('netFoto', function ($http) {
+  .factory('netFoto',['$http','localStorageService', function ($http, localStorageService) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var hostname = 'http://localhost:51698';
     var foto = {};
@@ -21,14 +21,28 @@ angular.module('angularZomer2015App')
     	var titel = imageRef.name;
     	var besc = imageRef.description;
     	var loc = imageRef.downloadUrl;
-    	$http.post(hostname + '/api/picture/',
-    		{
-				  "vacation":1,
-  				"titel":name,
-  				"beschrijving":besc,
-  				"locatie":loc
-  			});
+
+      var photo = {
+          "vacation":1,
+          "titel":name,
+          "beschrijving":besc,
+          "locatie":loc
+
+        };
+
+      var req = {
+       method: 'POST',
+       url: host + '/api/picture/',
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': localStorageService.get('authData').token
+       },
+       data: photo
+      };
+
+    	$http.post(hostname + '/api/picture/', photo, req);
     }
+
     //bestaat deze
     foto.get = function(ref){
       return $http.get(hostname + 'api/picture/'+ref);
@@ -41,4 +55,4 @@ angular.module('angularZomer2015App')
 
     // Public API here
     return foto;
-  });
+  }]);
