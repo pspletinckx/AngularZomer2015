@@ -14,6 +14,7 @@ angular.module('angularZomer2015App')
       var b = true;
       netNico.get($routeParams.id).then(function(response){
         $scope.vakantie = response.data;
+        $scope.submitText = "Bewaar wijzigingen";
       })
     }else{
       $scope.vakantie = 
@@ -31,6 +32,8 @@ angular.module('angularZomer2015App')
         inbegrepen: [],
         fiscaal_voordeel: false
       }
+
+      $scope.submitText = "Voeg vakantie toe";
     }
 
     $scope.submitted= false;
@@ -121,6 +124,7 @@ angular.module('angularZomer2015App')
       $scope.commentTitleMissing = false;
       $scope.commentDescriptionMissing = false;
       if(!$routeParams.id){
+        $scope.vakantie.id="";
         netNico.post($scope.vakantie);
       }else{
         netNico.put($scope.vakantie);

@@ -33,11 +33,22 @@ angular.module('angularZomer2015App')
           //msgbox.open().then(function(result){
              // if(result === 'yes') {
                 //code to delete here
-                if (window.confirm("Do you really want to leave?")) { 
+                if (window.confirm("Weet u zeker dat u deze vakantie wilt verwijderen?")) { 
                   netNico.delete($scope.vakantie.id);
                 }
               //}
         //});
       }
 
+      $scope.opmerkingAanwezig = function(){
+        if($scope.vakantie != null){
+          return ($scope.vakantie.opmerking.length > 0);
+        }
+      }
+
+      $scope.inbegrepenAanwezig = function(){
+        if($scope.vakantie != null){
+          return ($scope.vakantie.inbegrepen.length > 0);
+        }
+      }
 }]);

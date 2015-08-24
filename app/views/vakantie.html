@@ -57,7 +57,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default">
+			<div class="panel panel-default" >
 				<div class="panel-heading">Inbegrepen in de vakantie</div>
 				<div class="panel-body">
 					<ul>
@@ -66,15 +66,15 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default">
+			<div class="panel panel-default" >
 				<div class="panel-heading">Meer</div>
 				<div class="panel-body">
 					<div ng-repeat="opm in vakantie.opmerking">
-						<a ng-href="{{opm.url}}">
-							<h4>{{opm.Titel}}</h4>
+						
+							<strong>{{opm.titel}}:</strong>
 							<p> {{opm.text}}</p>
-
-						</a>
+						<a ng-href="{{opm.url}}">{{opm.url}}</a>
+						<hr/>
 					</div>
 					<a></a>
 				</div>

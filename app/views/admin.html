@@ -1,7 +1,7 @@
 <div class="container">
 	<h2> Vakantie toevoegen </h2>
 	<hr/>
-	<form class="" name="vakantieForm" ng-controller = "AdminCtrl" ng-submit="submit()" novalidate>		<br />
+	<form class="" name="vakantieForm" ng-controller = "AdminCtrl" ng-submit="vakantieForm.$valid && submit()" novalidate>		<br />
 
 		<h3>Algemene informatie</h3>
 		<hr/>
@@ -118,7 +118,7 @@
 			<button class="md-raised col-xs-1 btn pull-right" data-ng-Click="addIncludedItem()" type="button"><i class="glyphicon glyphicon-plus"/></button></div>	
 			<span ng-show="showIncludedItemRequired" class="help-block invalid">Dit veld kan niet leeg zijn.</span>
 		</div><br/>
-		<input type="submit" class="no-margin-left btn btn-primary" data-ng-click="submitted=true" value="Voeg vakantie toe"></input>
+		<input type="submit" class="no-margin-left btn btn-primary" data-ng-click="submitted=true" value="{{submitText}}"></input>
 
 	</form>
 </div>
