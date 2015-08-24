@@ -21,10 +21,10 @@ angular.module('angularZomer2015App')
     	var titel = imageRef.name;
     	var besc = imageRef.description;
     	var loc = imageRef.downloadUrl; 
-    	$http.post('http://localhost:51698/api/picture/',
+    	return $http.post('http://localhost:51698/api/picture/',
     		{
 				"vacation":1,
-  				"titel":name,
+  				"titel":titel,
   				"beschrijving":besc,
   				"locatie":loc
   			});

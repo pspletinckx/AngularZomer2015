@@ -9,6 +9,11 @@
  */
 angular.module('angularZomer2015App')
   .controller('LijstCtrl', function ($scope,nodePieter,netNico) {
+$scope.filterForm={
+  age:true,
+  vakantie:"zomervakantie"
+};
+
     $scope.vakanties = [];
     netNico
     .getAll()
@@ -17,7 +22,8 @@ angular.module('angularZomer2015App')
     });
 
     $scope.filterFunction = function(element) {
-    return element.name.match(/^Ma/) ? true : false;
+    return element.leeftijd.min_leeftijd<$scope.filterForm.age &&
+     $scope.filterForm.age < element.leeftijd.max_leeftijd;
   };
 
   });
