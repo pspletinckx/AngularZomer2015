@@ -3,7 +3,6 @@
 angular.module('angularZomer2015App')
 .controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams',
     function(AuthenticationService, UserService, $scope, $routeParams){
-
     	var self = this;
     	self.isLid='';
     	self.isBetaler='';

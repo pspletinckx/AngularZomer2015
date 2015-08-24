@@ -17,6 +17,14 @@
 	</div>
 	<div class="col-md-6 col-sx-12">
 		<div class="panel-group">
+			<div ng-show="true" class="panel panel-default">
+				<div class="panel-heading">Admin Tools</div>
+				<div class="panel-body">
+					<a class="btn btn-warning" ng-href="/#/admin/{{vakantie.id}}" >Aanpassen</a>
+					<button class="btn btn-danger" ng-click="deleteVac()">Verwijder</button>
+				</div>
+			</div>
+
 			<div class="panel panel-default">
 				<div class="panel-heading">Details</div>
 				<div class="panel-body">

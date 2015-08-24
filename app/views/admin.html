@@ -1,8 +1,7 @@
 <div class="container">
 	<h2> Vakantie toevoegen </h2>
 	<hr/>
-	<form class="" name="vakantieForm" ng-controller = "AdminCtrl" ng-submit="vakantieForm.$valid && submit()" novalidate>		
-	<form class="" name="vakantieForm" ng-controller = "AdminCtrl">		<br />
+	<form class="" name="vakantieForm" ng-controller = "AdminCtrl" ng-submit="submit()" novalidate>		<br />
 
 		<h3>Algemene informatie</h3>
 		<hr/>
@@ -18,11 +17,31 @@
 
 		<label>Max.Leeftijd</label><Input class="form-control" ng-model="vakantie.leeftijd.max_leeftijd" name="max_leeftijd" type="text" required="Geef een maximum leeftijd op"/>
 		<span ng-show="(submitted ||vakantieForm.max_leeftijd.$dirty) && vakantieForm.max_leeftijd.$error.required" class="help-block invalid">Geef een maximum leeftijd op.</span><br/>
-		<label class="col-xs-4 no-padding-left">Begindatum: {{vakantie.wanneer.date_begin|date}}</label><Input class="form-control" name="begindate"ng-model="vakantie.wanneer.date_begin" type="date" required="Geef een begindatum op."/>
-		<span ng-show="(submitted ||vakantieForm.begindate.$dirty) && vakantieForm.begindate.$error.required" class="help-block invalid">Geef een begindatum op.</span><br/>
 
-		<label class="col-xs-4 no-padding-left">Einddatum: {{vakantie.wanneer.date_end|date}}</label><Input class="form-control" name="enddate" ng-model="vakantie.wanneer.date_end" type="date" required="Geef een einddatum op."/><span ng-show="(submitted ||vakantieForm.enddate.$dirty) && vakantieForm.enddate.$error.required" class="help-block invalid">Geef een einddatum op.</span><br/>
+		<br />
+		<label class="no-padding-left">Begindatum: </label> <br />
+		<div class="display-inline-box">
+            <p class="input-group dt-table">
+              <input type="text" class="form-control" name="begindate" datepicker-popup="{{format}}" ng-model="vakantie.wanneer.date_begin" is-open="status.beginOpened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openBegin($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>              
+            </p>
+        </div>
+        <div><span ng-show="(submitted ||vakantieForm.begindate.$dirty) && vakantieForm.begindate.$error.required" class="help-block invalid">Geef een begindatum op.</span></div><br/>
 
+		<br />
+		<label class="no-padding-left">Einddatum: </label><br />
+		<div class="display-inline-box">
+            <p class="input-group dt-table">
+              <input type="text" class="form-control" name="enddate" datepicker-popup="{{format}}" ng-model="vakantie.wanneer.date_end" is-open="status.endOpened" min-date="vakantie.wanneer.date_begin" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>              
+            </p>         
+        </div>
+        <div><span ng-show="(submitted ||vakantieForm.enddate.$dirty) && vakantieForm.enddate.$error.required" class="help-block invalid">Geef een einddatum op.</span></div><br/>
+		
 		<label class="col-xs-4 no-padding-left">Max. aantal Deelnemers</label><Input class="form-control" ng-model="vakantie.aantal_deelnemers" type="text" required="Vul het maximum aantal deelnemers in."/><span ng-show="(submitted ||vakantieForm.enddate.$dirty) && vakantieForm.enddate.$error.required" class="help-block invalid">Vul het maximum aantal deelnemers in.
 		</span>
 

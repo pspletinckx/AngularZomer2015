@@ -82,10 +82,17 @@ body {
 .container-narrow > hr {
   margin: 30px 0;
 }
-
+p.dt-table > ul{
+  right: 0;
+  left: auto !important;
+}
 .invalid{
   color: #a94442 !important;
   font-weight: bold;
+}
+
+.display-inline-box{
+      display: -webkit-inline-box;
 }
 
 /* Main marketing message and sign up button */

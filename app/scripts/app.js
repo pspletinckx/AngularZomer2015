@@ -44,6 +44,10 @@ angular
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl'
       })
+      .when('/admin/:id',{
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl'
+      })
       .when('/login',{
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',

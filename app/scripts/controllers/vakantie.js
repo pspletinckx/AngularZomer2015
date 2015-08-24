@@ -8,8 +8,8 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('VakantieCtrl',['$scope', '$routeParams', 'netNico', '$rootScope', function ($scope,$routeParams,netNico,$rootscope) {
-
+  .controller('VakantieCtrl',['$scope', '$routeParams', 'netNico', '$rootScope',
+    function ($scope,$routeParams,netNico,$rootscope,$dialog) {
   	var self = this;
   	self.vakantieId = $routeParams.id;
   	$scope.vakantie ={}; //hoeft niet echt voor objecten
@@ -27,5 +27,17 @@ angular.module('angularZomer2015App')
     };
 
      $scope.$on('user:loggedIn', _onUserLoggedIn);
+
+     $scope.deleteVac = function(){
+       //var msgbox = $dialog.messageBox('Vakantie verwijderen', 'Weet u zeker dat u deze vakantie wilt verwijderen?', [{label:'Ja', result: 'yes'},{label:'Nee', result: 'no'}]);
+          //msgbox.open().then(function(result){
+             // if(result === 'yes') {
+                //code to delete here
+                if (window.confirm("Do you really want to leave?")) { 
+                  netNico.delete($scope.vakantie.id);
+                }
+              //}
+        //});
+      }
 
 }]);

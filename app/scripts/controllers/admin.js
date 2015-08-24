@@ -8,7 +8,31 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-  .controller('AdminCtrl', function ($scope, netNico) {
+  .controller('AdminCtrl', function ($scope, netNico, $routeParams) {
+
+    if($routeParams.id){
+      var b = true;
+      netNico.get($routeParams.id).then(function(response){
+        $scope.vakantie = response.data;
+      })
+    }else{
+      $scope.vakantie = 
+      {
+        titel: "",
+        leeftijd: {},
+        waar: {},
+        wanneer: {},
+        aantal_deelnemers: 0,
+        prijs: {},
+        informatie: {},
+        foto: [],
+        opmerking: [],
+        promotext: "",
+        inbegrepen: [],
+        fiscaal_voordeel: false
+      }
+    }
+
     $scope.submitted= false;
     $scope.commentSubmitted=false;
     $scope.commentValid = false;
@@ -88,7 +112,7 @@ angular.module('angularZomer2015App')
     }
 
     $scope.submit = function(){
-            $scope.includedItem = "";
+      $scope.includedItem = "";
       $scope.showIncludedItemRequired = false;
 
       $scope.commentHelper = "";
@@ -96,7 +120,36 @@ angular.module('angularZomer2015App')
       $scope.commentUrl = "";
       $scope.commentTitleMissing = false;
       $scope.commentDescriptionMissing = false;
-      netNico.post($scope.vakantie);
-
+      if(!$routeParams.id){
+        netNico.post($scope.vakantie);
+      }else{
+        netNico.put($scope.vakantie);
+      }
     }
+
+    //datepicker
+
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
+
+    $scope.toggleMin();
+
+    $scope.openBegin = function($event) {
+      $scope.status.beginOpened = true;
+    };
+
+    $scope.openEnd = function($event) {
+      $scope.status.endOpened = true;
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+
+    $scope.status = {
+      beginOpened: false,
+      endOpened: false
+    };
+
+
   });
