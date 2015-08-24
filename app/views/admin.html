@@ -61,14 +61,17 @@
 			<label class="col-xs-2 no-padding-left control-label">Title:</label>
 			<Input class="form-control col-xs-10 margin-bottom-5" name="commentTitle" type="text" ng-model="commentTitle"/>
 			<span ng-show="(commentValidated || vakantieForm.commentTitle.$dirty) && commentTitleMissing" class="help-block invalid">Geef de opmerking een titel.</span>
+
 			<label class="no-padding-left col-xs-12 control-label">Opmerking:</label>
 			<textarea class="form-control col-xs-12 margin-bottom-5" name="commentText" type="text" ng-model="commentHelper"/>
 			<span ng-show="(commentValidated || vakantieForm.commentText.$dirty) && commentTitleMissing" class="help-block invalid">Vul een opmerking in.</span>
-			<label class="no-padding-left col-xs-2 ">Url:</label>
-			<Input class="col-xs-10 form-control" type="text" ng-model="commentUrl"/><br/>
+
+			<label class="no-padding-left col-xs-2 ">Url: </label>
+			<Input class="col-xs-10 form-control" type="url" name="commentLink" ng-model="commentUrl"/><br/>
+			<span ng-show="vakantieForm.commentLink.$error.url" class="help-block invalid">Vul een geldige url in (http://www.voorbeeld.com).</span>
 			<div><Input class="col-xs-3 btn pull-right" data-ng-Click="addComment()" type="button" value="Opmerking bijvoegen"></div>		
 		</div><br />	
-		<label>Inbegrepen</label><br />	<br />
+		<label>Inbegrepen</label><br /><br />
 		<div class="add-border">
 			<div  class="display-inherit" ng-repeat="item in vakantie.inbegrepen">
 				<div class="full-width display-inherit">

@@ -60,15 +60,6 @@ angular.module('angularZomer2015App')
     }
 
    	$scope.addComment = function(){
-      $scope.includedItem = "";
-      $scope.showIncludedItemRequired = false;
-
-      $scope.commentHelper = "";
-      $scope.commentTitle = "";
-      $scope.commentUrl = "";
-      $scope.commentTitleMissing = false;
-      $scope.commentDescriptionMissing = false;
-
       $scope.commentValidation();
       if($scope.commentValid){
      		$scope.vakantie.opmerking.push({text: $scope.commentHelper, titel: $scope.commentTitle, url: $scope.commentUrl});
@@ -97,6 +88,14 @@ angular.module('angularZomer2015App')
     }
 
     $scope.submit = function(){
+            $scope.includedItem = "";
+      $scope.showIncludedItemRequired = false;
+
+      $scope.commentHelper = "";
+      $scope.commentTitle = "";
+      $scope.commentUrl = "";
+      $scope.commentTitleMissing = false;
+      $scope.commentDescriptionMissing = false;
       netNico.post($scope.vakantie);
 
     }
