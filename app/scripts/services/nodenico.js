@@ -60,7 +60,7 @@ angular.module('angularZomer2015App')
 
       var req = {
        method: 'PUT',
-       url: host + 'api/vacation/',
+       url: host + '/api/vacation/',
        headers: {
          'Content-Type': 'application/json',
          'Authorization': localStorageService.get('authData').token
@@ -68,7 +68,7 @@ angular.module('angularZomer2015App')
        data: vakantie
       };      
       
-      $http.put(host + 'api/vacation/', vakantie, req).then(
+      $http.put(host + '/api/vacation/', vakantie, req).then(
         function(response){
           $window.location.href = '/#/vakantie/'+response.data;
           console.log(response.data);
