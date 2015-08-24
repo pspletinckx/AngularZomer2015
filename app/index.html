@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    
+
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -51,7 +51,7 @@
               <li ng-class="{active:isUrl('/')}"><a href="#/">Home</a></li>
               <li ng-class="{active:isUrl('/lijst')}"><a ng-href="#/lijst">Vakanties</a></li>
               <li ng-class="{active:isUrl('/about')}"><a ng-href="#/about">Fotoboek</a></li>
-              <li ng-class="{active:isUrl('/test')}"ng-show="user.isAdmin"><a ng-href="#/test">Admin</a></li>
+              <li ng-class="{active:isUrl('/admin')}"ng-show="true"><a ng-href="#/admin">Admin</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a ng-href="#/register" ng-hide="user.isAuth" aria-label="Registreren">Registreer</a></li>
@@ -70,7 +70,7 @@
     <div class="footer row">
       <div class="container">
 
-      
+
         <ul class="list-unstyled">
           <li>Gemaakt door</li>
           <li>Fabrice Bossuyt</li>
@@ -102,6 +102,7 @@
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-video.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
     <script src="bower_components/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="http://apis.google.com/js/client.js"></script>
@@ -109,7 +110,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-                <script src="scripts/services/authentication.js"></script>
+        <script src="scripts/services/authentication.js"></script>
         <script src="scripts/directives/rrn.js"></script>
         <script src="scripts/directives/password.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -118,7 +119,7 @@
         <script src="scripts/services/nodenico.js"></script>
         <script src="scripts/services/nodepieter.js"></script>
         <script src="scripts/controllers/lijst.js"></script>
-        <script src="scripts/controllers/test.js"></script>
+        <script src="scripts/controllers/admin.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/flash.js"></script>

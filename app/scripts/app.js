@@ -19,7 +19,8 @@ angular
     'ngMaterial',
     'lk-google-picker',
     'ngMaterial', 
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,9 +40,9 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/test',{
-        templateUrl: 'views/test.html',
-        controller: 'TestCtrl'
+      .when('/admin',{
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl'
       })
       .when('/login',{
         templateUrl: 'views/login.html',
@@ -55,7 +56,11 @@ angular
       })
       .when('/vakantie/:id/subscribe',{
         templateUrl: 'views/subscribe.html',
-        controller: 'SubscribeCtrl'
+        controller: 'SubscribeCtrl',
+        controllerAs: 'self',
+        access: {
+          requiresLogin: true
+        }
       })
       .when('/404',{
         templateUrl: '404.html'

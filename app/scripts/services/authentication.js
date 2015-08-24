@@ -1,23 +1,24 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService', 
+.factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService',
     function($http, $cookieStore, $q, $rootScope,  $timeout, UserService, localStorageService){
 
-        var baseUrl = 'http://aug2015.devilcrafter.com'
-        var service = {}, 
+        var baseUrl = 'http://localhost:51698/'
+        var service = {},
         _user = {
             email: '',
             token: '',
-            isAuth: false, 
-            role: '', 
+            isAuth: false,
+            role: '',
         };
 
         service.Init = Init;
         service.Login = Login;
         service.SetCredentials = SetCredentials;
-        service.logout = _logout; 
- 
+        service.logout = _logout;
+        service.GetMe = GetMe;
+
         return service;
 
         function Init() {
@@ -26,13 +27,14 @@ angular.module('angularZomer2015App')
 
             if(authData) {
                 _user.token = authData.token;
+                console.log(_user.token)
 
                 GetMe().then(function(){
 
                 }, function(){
 
                 });
-               
+
                     _user.isAuth = true;
                     defer.resolve(_user);
             } else {
@@ -40,8 +42,8 @@ angular.module('angularZomer2015App')
             }
 
             return defer.promise;
-        };     
- 
+        };
+
         function Login(username, password, callback) {
               var headers={};
 
@@ -49,9 +51,9 @@ angular.module('angularZomer2015App')
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:51698/token',
+                url: baseUrl + '/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: { username: username, password: password, grant_type: 'password' }, 
+                data: { username: username, password: password, grant_type: 'password' },
                 transformRequest: function (obj) {
                                     var str = [];
                                     for (var p in obj)
@@ -60,7 +62,7 @@ angular.module('angularZomer2015App')
             }}).success(function(response) {
                 callback(response, _user);
             }).error(function(response){
-                callback(response, _user);
+                callback(response);
             });
         }
 
@@ -71,10 +73,10 @@ angular.module('angularZomer2015App')
             _user.isAuth = false;
         };
 
-        
- 
-        function SetCredentials(token) {           
- 
+
+
+        function SetCredentials(token) {
+
             localStorageService.set('authData', {
                     token: token
             });
@@ -95,7 +97,7 @@ angular.module('angularZomer2015App')
 
             return $http({
                 method: 'GET',
-                url: 'http://localhost:51698/api/account', 
+                url: baseUrl + '/api/account',
                 headers: header
             });
         }

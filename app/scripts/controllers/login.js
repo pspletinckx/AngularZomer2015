@@ -11,7 +11,7 @@ angular.module('angularZomer2015App')
         function login() {
             vm.dataLoading = true;
             AuthenticationService.Login(vm.username, vm.password, function (response, user) {              
-                if (response.error_description=== undefined) {
+                if (response.error_description === undefined) {
                     var token = response.token_type + ' ' + response.access_token;
                     AuthenticationService.SetCredentials(token);
                     window.history.back();

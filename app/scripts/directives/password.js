@@ -1,3 +1,6 @@
+'use strict';
+
+
 angular.module('angularZomer2015App').
 
 directive('compareTo', function() {
