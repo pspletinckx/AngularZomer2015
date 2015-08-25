@@ -23,13 +23,13 @@ $scope.filterForm={
     });
 
     $scope.filterFunction = function(element) {
-      var filter = $scope.filterform;
+      var filter = $scope.filterForm;
       console.log("Debug voor filter");
       console.log(element.leeftijd.min_leeftijd+" < "+ $scope.filterForm.age +" < "+ element.leeftijd.max_leeftijd);
-    if($scope.filterForm.age==true && filter.title.length()<1) return true;
+    if($scope.filterForm.age==true) return true; //disable with || true
 
     return (element.leeftijd.min_leeftijd<=$scope.filterForm.age &&
-     $scope.filterForm.age <= element.leeftijd.max_leeftijd) && (element.titel.test(filter.title));
+     $scope.filterForm.age <= element.leeftijd.max_leeftijd);
   };
 
   });

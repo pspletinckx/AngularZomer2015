@@ -12,7 +12,7 @@ angular.module('angularZomer2015App')
 
 
     var vakantie = {};
-    var host = 'http://localhost:60482';
+    var host = 'http://aug2015.devilcrafter.com';
     vakantie.getAll = function(){
       return $http.get(host + '/api/vacation');
     }

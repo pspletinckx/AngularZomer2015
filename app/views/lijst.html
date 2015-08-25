@@ -1,8 +1,9 @@
 	<div class="container">
 		<div class="row well">
-			<p>{{filterForm}}</p>
+			<!--<p>{{filterForm}}</p> -->
 			<form>
-				<input ng-model="filterForm.title" type="text" placeholder="Naam van de vakantie" autofocus class="form-control">
+				
+				<input ng-model="filterForm.title" type="text" placeholder="Zoek overal" autofocus class="form-control">
 				<label for ="leeftijd">enkel leeftijd:</label>
 				<select class="form-control" ng-model="filterForm.age" id="leeftijd">
 					<option value="-1"> test neg leeftijd</option>
@@ -36,7 +37,8 @@
 
 			</form>
 		</div>
-		<p>{{vakanties}}</p>
+		<!--debug-->
+		<!--<p>{{vakanties}}</p> -->
 
 	<div class="row">
 		<div class="col-xs-4" ng-repeat="vakantie in vakanties | filter:filterFunction | orderBy: 'wanneer.date_begin' ">
@@ -44,6 +46,7 @@
 				<img ng-src="{{vakantie.cover_foto.locatie}}" width="100%">
 				<h3 class="caption">{{vakantie.titel}}</h3>
 			</a>
+			<!--
 			<h4>searchparams</h4>
 			<p>{{vakantie.wanneer.date_begin|date}}</p>
 			<p>{{vakantie.wanneer.date_end|date}}</p>
@@ -51,7 +54,8 @@
 			<p>{{vakantie.leeftijd.min_leeftijd}}</p>
 			<p>{{vakantie.leeftijd.max_leeftijd}}</p>
 			<p>{{vakantie}}</p>
+		-->
 		</div>
 	</div>
-	<p>TODO Pagination</p>
+	<!--<p>TODO Pagination</p> -->
 </div>
