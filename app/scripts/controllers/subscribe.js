@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('angularZomer2015App')
-.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams',
-    function(AuthenticationService, UserService, $scope, $routeParams){
+.controller('SubscribeCtrl', ['AuthenticationService', 'UserService', '$scope', '$routeParams', 'SubscribeService','$location',
+    function(AuthenticationService, UserService, $scope, $routeParams,SubscribeService, $location){
     	var self = this;
       self.isBetaler=null;
       self.vakantieId = $routeParams.id;
@@ -40,7 +40,7 @@ angular.module('angularZomer2015App')
 
       SubscribeService.subscribe($scope.subscrModel)
       .then(function(response){
-        $location.path('#/vakantie/' + self.vakantieId)
+        $location.path('/')
       }, function(response){
         $scope.error = response;
       });

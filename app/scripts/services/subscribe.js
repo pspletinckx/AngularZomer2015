@@ -11,7 +11,7 @@ angular.module('angularZomer2015App')
   .factory('SubscribeService', function ($http, localStorageService) {
 
   	function subscribe(subscription){
-        var host = 'http://localhost:60482';
+
         var header={};
         var authData = localStorageService.get('authData');
         var token = authData.token;
@@ -19,7 +19,7 @@ angular.module('angularZomer2015App')
 
         return $http({
             method: 'post',
-            url: host + '/api/subscribe',
+            url: 'http://aug2015.devilcrafter.com/api/subscribe',
             data: subscription,
             headers: header
         });       
