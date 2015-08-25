@@ -1,9 +1,8 @@
 	<div class="container">
 		<div class="row well">
-			<p>Hier moet nog een filter komen</p>
 			<p>{{filterForm}}</p>
 			<form>
-				<input ng-model="query" type="text" placeholder="Zoek overal" autofocus class="form-control">
+				<input ng-model="filterForm.title" type="text" placeholder="Naam van de vakantie" autofocus class="form-control">
 				<label for ="leeftijd">enkel leeftijd:</label>
 				<select class="form-control" ng-model="filterForm.age" id="leeftijd">
 					<option value="-1"> test neg leeftijd</option>

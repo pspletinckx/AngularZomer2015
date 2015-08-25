@@ -17,8 +17,4 @@
 .gridListdemoBasicUsage md-grid-tile {
   transition: all 400ms ease-out 50ms; }
 
-  .dummypanel{
-  	background: #84ffff;
-  	min-height: 15em;
-  }
 
