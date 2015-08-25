@@ -11,7 +11,7 @@ angular.module('angularZomer2015App')
   .factory('netNico',['$http', 'localStorageService', '$window', function ($http, localStorageService, $window) {
 
     var vakantie = {};
-    var host = "http://localhost:51698/"
+    var host = "http://localhost:51698"
     vakantie.getAll = function(){
       return $http.get(host + '/api/vacation');
     }

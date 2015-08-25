@@ -8,7 +8,7 @@
  * Controller of the angularZomer2015App
  */
 angular.module('angularZomer2015App')
-.controller('AboutCtrl', function ($scope,netFoto,netNico) {
+.controller('AboutCtrl',['$scope','netFoto','netNico',function ($scope,netFoto,netNico) {
    $scope.files = [];
    $scope.afbeeldingen=[];
 
@@ -37,6 +37,7 @@ angular.module('angularZomer2015App')
     });
    };
     $scope.update();
+
     $scope.fotoToevoegen=function(foto){
         netFoto.post(foto).then(
         function(response){
@@ -45,7 +46,7 @@ angular.module('angularZomer2015App')
         function(response){}
         );
     };
-});
+}]);
 
 //controller requires vacation that goes with the account or enlistment
 

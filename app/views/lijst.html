@@ -1,23 +1,29 @@
 	<div class="container">
 		<div class="row well">
-	<p>Hier moet nog een filter komen</p>
-	<p>{{filterForm}}</p>
-	<form>
-		<input ng-model="query" type="text" placeholder="Zoek overal" autofocus class="form-control">
-		<label for ="leeftijd">enkel leeftijd:</label>
-		<select class="form-control" ng-model="filterForm.age" id="leeftijd">
-			<option value="-1"> test neg leeftijd</option>
-			<option value="10">10-jarigen</option>
-			<option value="11">11-jarigen</option>
-			<option value="12">12-jarigen</option>
-			<option value="13">13-jarigen</option>
-			<option value="14">14-jarigen</option>
-			<option value="15">15-jarigen</option>
-			<option value="16">16-jarigen</option>
-			<option value="17">17-jarigen</option>
-			<option value="18">18-jarigen</option>
-		</select>
-		<!-- De entiteit vakantie is zijn veld schoolvakantie kwijt-->	
+			<p>Hier moet nog een filter komen</p>
+			<p>{{filterForm}}</p>
+			<form>
+				<input ng-model="query" type="text" placeholder="Zoek overal" autofocus class="form-control">
+				<label for ="leeftijd">enkel leeftijd:</label>
+				<select class="form-control" ng-model="filterForm.age" id="leeftijd">
+					<option value="-1"> test neg leeftijd</option>
+					<option value="4">4-jarigen</option>
+					<option value="5">5-jarigen</option>
+					<option value="6">6-jarigen</option>
+					<option value="7">7-jarigen</option>
+					<option value="8">8-jarigen</option>
+					<option value="9">9-jarigen</option>
+					<option value="10">10-jarigen</option>
+					<option value="11">11-jarigen</option>
+					<option value="12">12-jarigen</option>
+					<option value="13">13-jarigen</option>
+					<option value="14">14-jarigen</option>
+					<option value="15">15-jarigen</option>
+					<option value="16">16-jarigen</option>
+					<option value="17">17-jarigen</option>
+					<option value="18">18-jarigen</option>
+				</select>
+				<!-- De entiteit vakantie is zijn veld schoolvakantie kwijt-->	
 		<!--
 		</select>
 			<select class="form-control">
@@ -27,27 +33,26 @@
 			<option value="paas">Paasvakantie</option>
 		
 		</select>
-		-->
-		
-	</form>
-	</div>
-	<div ng-app="LijstCtrl">
-		<div class="row">
-	<div class="col-xs-4" ng-repeat="vakantie in vakanties | filter:filterFunction | orderBy: 'wanneer.date_begin' ">
-				<a href="#/vakantie/{{vakantie.id}}" class="thumbnail">
+	-->
+
+			</form>
+		</div>
+		<p>{{vakanties}}</p>
+
+	<div class="row">
+		<div class="col-xs-4" ng-repeat="vakantie in vakanties | filter:filterFunction | orderBy: 'wanneer.date_begin' ">
+			<a href="#/vakantie/{{vakantie.id}}" class="thumbnail">
 				<img ng-src="{{vakantie.cover_foto.locatie}}" width="100%">
 				<h3 class="caption">{{vakantie.titel}}</h3>
-				</a>
-				<h4>searchparams</h4>
-				<p>{{vakantie.wanneer.date_begin|date}}</p>
-				<p>{{vakantie.wanneer.date_end|date}}</p>
-				<p>{{vakantie.prijs.basis}}</p>
-				<p>{{vakantie.leeftijd.min_leeftijd}}</p>
-				<p>{{vakantie.leeftijd.max_leeftijd}}</p>
-				<p>{{vakantie}}</p>
-	</div>
-
+			</a>
+			<h4>searchparams</h4>
+			<p>{{vakantie.wanneer.date_begin|date}}</p>
+			<p>{{vakantie.wanneer.date_end|date}}</p>
+			<p>{{vakantie.prijs.basis}}</p>
+			<p>{{vakantie.leeftijd.min_leeftijd}}</p>
+			<p>{{vakantie.leeftijd.max_leeftijd}}</p>
+			<p>{{vakantie}}</p>
+		</div>
 	</div>
 	<p>TODO Pagination</p>
-
-	</div>
+</div>
