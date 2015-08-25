@@ -51,7 +51,7 @@
               <li ng-class="{active:isUrl('/')}"><a href="#/">Home</a></li>
               <li ng-class="{active:isUrl('/lijst')}"><a ng-href="#/lijst">Vakanties</a></li>
               <li ng-class="{active:isUrl('/about')}"><a ng-href="#/about">Fotoboek</a></li>
-              <li ng-class="{active:isUrl('/admin')}"ng-show="true"><a ng-href="#/admin">Admin</a></li>
+              <li ng-class="{active:isUrl('/admin')}"ng-show="user.role=='Admin'"><a ng-href="#/admin">Admin</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a ng-href="#/register" ng-hide="user.isAuth" aria-label="Registreren">Registreer</a></li>
