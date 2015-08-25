@@ -16,5 +16,4 @@ describe('Controller: TestCtrl', function () {
     });
   }));
 
-
 });

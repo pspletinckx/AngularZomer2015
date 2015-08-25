@@ -22,8 +22,11 @@ $scope.filterForm={
     });
 
     $scope.filterFunction = function(element) {
-    return element.leeftijd.min_leeftijd<$scope.filterForm.age &&
-     $scope.filterForm.age < element.leeftijd.max_leeftijd;
+      console.log("Debug voor filter");
+      console.log(element.leeftijd.min_leeftijd+" < "+ $scope.filterForm.age +" < "+ element.leeftijd.max_leeftijd);
+    if($scope.filterForm.age==true) return true;
+    return element.leeftijd.min_leeftijd<=$scope.filterForm.age &&
+     $scope.filterForm.age <= element.leeftijd.max_leeftijd;
   };
 
   });
