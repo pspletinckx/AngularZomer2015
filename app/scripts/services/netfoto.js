@@ -32,7 +32,7 @@ angular.module('angularZomer2015App')
 
       var req = {
        method: 'POST',
-       url: host + '/api/picture/',
+       url: hostname + '/api/picture/',
        headers: {
          'Content-Type': 'application/json',
          'Authorization': localStorageService.get('authData').token
@@ -40,7 +40,7 @@ angular.module('angularZomer2015App')
        data: photo
       };
 
-    	$http.post(hostname + '/api/picture/', photo, req);
+    	return $http.post(hostname + '/api/picture/', photo, req);
     }
 
     //bestaat deze
