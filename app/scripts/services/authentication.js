@@ -4,7 +4,7 @@ angular.module('angularZomer2015App')
 .factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService',
     function($http, $cookieStore, $q, $rootScope,  $timeout, UserService, localStorageService){
 
-        var baseUrl = 'http://aug2015.devilcrafter.com'
+        var baseUrl = 'http://localhost:60482'
         var service = {},
         _user = {
             email: '',

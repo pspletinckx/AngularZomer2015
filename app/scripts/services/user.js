@@ -4,7 +4,7 @@ angular.module('angularZomer2015App')
 .factory('UserService', ['$http', 'localStorageService',
     function($http, localStorageService){
 
-        var baseurl = 'http://localhost:51698';
+        var baseurl = 'http://localhost:60482';
         var service = {};
 
         service.GetAll = GetAll;
