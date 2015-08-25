@@ -10,7 +10,7 @@
 angular.module('angularZomer2015App')
   .factory('netFoto',['$http','localStorageService', function ($http, localStorageService) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    var hostname = 'http://localhost:51698';
+    var hostname = 'http://localhost:60482';
     var foto = {};
 
     foto.getAll = function(){
