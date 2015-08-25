@@ -1,4 +1,5 @@
-<div>
+<div class="container">
+    <div ng-show="error" class="alert alert-danger">{{error}}</div>
     <form name="form" ng-submit="self.subscribe()" role="form" class="form-horizontal">    
         <fieldset>
             <legend>Gegevens van de contactpersoon</legend>

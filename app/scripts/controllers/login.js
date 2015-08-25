@@ -10,18 +10,16 @@ angular.module('angularZomer2015App')
 
         function login() {
             vm.dataLoading = true;
-            AuthenticationService.Login(vm.username, vm.password, function (response, user) {              
-                if (!response.error_description) {
-                    var token = response.token_type + ' ' + response.access_token;
-                    AuthenticationService.SetCredentials(token);
+            AuthenticationService.Login(vm.username, vm.password)
+                .then(function (response) {              
                     //window.history.back();
-                    $scope.$emit('user:loggedIn', user);
+                    $scope.$emit('user:loggedIn', response);
                     $location.path('/')
-                } else {                  
+                },function(response){
+                    console.log(response)
                     FlashService.Error(response.error_description);
                     vm.error = response.error_description;
                     vm.dataLoading = false;
-                }
-            });
+                });
         };
     }]);
