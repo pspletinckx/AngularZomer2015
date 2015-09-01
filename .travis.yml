@@ -1,4 +1,8 @@
 language: node_js
+cache:
+  directories:
+    - node_modules
+    - bower_components
 node_js:
   - "0.10"
 before_install: 
@@ -8,4 +12,4 @@ install:
   - npm install
   - bower install
 before_script: grunt build
-script: npm test
+script: grunt test
