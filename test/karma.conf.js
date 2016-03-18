@@ -77,11 +77,13 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun = true;
-    reporters = ['dots', 'junit'];
-    junitReporter = {
+    singleRun : true,
+
+    //reporters : ['dots', 'junit'],
+
+    junitReporter : {
       outputFile: 'test-results.xml'
-    };
+    },
 
     colors: true,
 
